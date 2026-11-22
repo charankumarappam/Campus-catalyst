@@ -10,7 +10,7 @@ __pycache__/
 *.bak
 
 # Streamlit Local Cache
-.streamlit/
+# .streamlit/
 
 # OS specific
 Thumbs.db
