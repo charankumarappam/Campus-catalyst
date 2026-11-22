@@ -65,8 +65,10 @@ class StorageManager:
 
     def _init_sqlite_schema(self) -> None:
         """Initializes relational tables and performance indexes in SQLite."""
+        conn = None
         try:
-            with self._get_sqlite_connection() as conn:
+            conn = self._get_sqlite_connection()
+            with conn:
                 conn.execute("""
                     CREATE TABLE IF NOT EXISTS events (
                         event_id TEXT PRIMARY KEY,
@@ -98,12 +100,14 @@ class StorageManager:
                         FOREIGN KEY (event_id) REFERENCES events (event_id) ON DELETE CASCADE
                     );
                 """)
-                # Create performance indices
                 conn.execute("CREATE INDEX IF NOT EXISTS idx_reg_event ON registrations (event_id);")
                 conn.execute("CREATE INDEX IF NOT EXISTS idx_reg_roll ON registrations (roll_number);")
                 conn.execute("CREATE INDEX IF NOT EXISTS idx_reg_email ON registrations (email);")
         except Exception as e:
             print(f" [WARNING] Could not initialize SQLite schema: {e}")
+        finally:
+            if conn:
+                conn.close()
 
     def _backup_corrupted_file(self, file_path: Path) -> Path:
         """Creates a timestamped backup of a malformed or corrupted file."""
@@ -167,13 +171,17 @@ class StorageManager:
     def _load_events_from_sqlite(self) -> List[Event]:
         """Loads events from SQLite database."""
         events = []
+        conn = None
         try:
-            with self._get_sqlite_connection() as conn:
-                cursor = conn.execute("SELECT * FROM events ORDER BY event_id ASC;")
-                for row in cursor.fetchall():
-                    events.append(Event.from_dict(dict(row)))
+            conn = self._get_sqlite_connection()
+            cursor = conn.execute("SELECT * FROM events ORDER BY event_id ASC;")
+            for row in cursor.fetchall():
+                events.append(Event.from_dict(dict(row)))
         except Exception:
             pass
+        finally:
+            if conn:
+                conn.close()
         return events
 
     def _load_events_from_csv(self) -> List[Event]:
@@ -202,8 +210,10 @@ class StorageManager:
         data = [e.to_dict() for e in events]
 
         # 1. Sync SQLite
+        conn = None
         try:
-            with self._get_sqlite_connection() as conn:
+            conn = self._get_sqlite_connection()
+            with conn:
                 conn.execute("DELETE FROM events;")
                 for e in events:
                     conn.execute("""
@@ -212,6 +222,9 @@ class StorageManager:
                     """, (e.event_id, e.title, e.category, e.event_date, e.registration_deadline, e.max_capacity, e.venue, e.fee, e.created_at))
         except Exception as sqle:
             print(f" [WARNING] SQLite event sync: {sqle}")
+        finally:
+            if conn:
+                conn.close()
 
         # 2. Sync JSON & CSV
         self._save_events_to_json(events)
@@ -298,13 +311,17 @@ class StorageManager:
     def _load_registrations_from_sqlite(self) -> List[Registration]:
         """Loads registrations from SQLite."""
         regs = []
+        conn = None
         try:
-            with self._get_sqlite_connection() as conn:
-                cursor = conn.execute("SELECT * FROM registrations ORDER BY registration_id ASC;")
-                for row in cursor.fetchall():
-                    regs.append(Registration.from_dict(dict(row)))
+            conn = self._get_sqlite_connection()
+            cursor = conn.execute("SELECT * FROM registrations ORDER BY registration_id ASC;")
+            for row in cursor.fetchall():
+                regs.append(Registration.from_dict(dict(row)))
         except Exception:
             pass
+        finally:
+            if conn:
+                conn.close()
         return regs
 
     def _load_registrations_from_csv(self) -> List[Registration]:
@@ -329,8 +346,10 @@ class StorageManager:
         self._ensure_directories()
 
         # 1. Sync SQLite
+        conn = None
         try:
-            with self._get_sqlite_connection() as conn:
+            conn = self._get_sqlite_connection()
+            with conn:
                 conn.execute("DELETE FROM registrations;")
                 for r in registrations:
                     conn.execute("""
@@ -346,6 +365,9 @@ class StorageManager:
                     ))
         except Exception as sqle:
             print(f" [WARNING] SQLite registration sync: {sqle}")
+        finally:
+            if conn:
+                conn.close()
 
         # 2. Sync JSON & CSV
         self._save_registrations_to_json(registrations)
