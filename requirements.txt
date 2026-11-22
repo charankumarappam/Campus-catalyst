@@ -1,0 +1,4 @@
+# Campus Catalyst: College Event Registration Manager (Project #8)
+# Python 3.10+ Standard Library is primary.
+# External visualization dependencies:
+matplotlib>=3.7.0

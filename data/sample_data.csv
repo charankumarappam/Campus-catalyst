@@ -1,0 +1,45 @@
+registration_id,event_id,student_name,roll_number,email,phone,department,year_of_study,registration_timestamp,payment_status,attendance_status,registration_status,notes
+REG-2026-001,EVT-101,Aarav Sharma,21CS101,aarav.sharma@campus.edu,9876543210,Computer Science,4,2026-11-15 10:12:00,Completed,Registered,Confirmed,Team Leader - NeuralByte
+REG-2026-002,EVT-101,Diya Patel,21CS104,diya.patel@campus.edu,9876543211,Computer Science,4,2026-11-15 10:15:00,Completed,Registered,Confirmed,Frontend Dev
+REG-2026-003,EVT-101,Rohan Verma,22IT045,rohan.verma@campus.edu,9876543212,Information Technology,3,2026-11-15 11:00:00,Completed,Registered,Confirmed,Cloud Architect
+REG-2026-004,EVT-101,Sneha Iyer,22EC018,sneha.iyer@campus.edu,9876543213,Electronics & Comm,3,2026-11-15 11:30:00,Completed,Registered,Confirmed,Edge Computing
+REG-2026-005,EVT-101,Vikram Singh,23CS202,vikram.singh@campus.edu,9876543214,Computer Science,2,2026-11-16 09:20:00,Completed,Registered,Confirmed,ML Pipeline
+REG-2026-006,EVT-101,Ananya Reddy,23AI012,ananya.reddy@campus.edu,9876543215,Artificial Intelligence,2,2026-11-16 10:05:00,Completed,Registered,Confirmed,NLP Researcher
+REG-2026-007,EVT-101,Karthik Nair,21ME089,karthik.nair@campus.edu,9876543216,Mechanical Engg,4,2026-11-16 14:15:00,Completed,Registered,Confirmed,Hardware Prototyping
+REG-2026-008,EVT-101,Pooja Desai,22EE034,pooja.desai@campus.edu,9876543217,Electrical Engg,3,2026-11-17 12:40:00,Completed,Registered,Confirmed,IoT Sensors
+REG-2026-009,EVT-101,Aditya Joshi,24CS005,aditya.joshi@campus.edu,9876543218,Computer Science,1,2026-11-17 16:30:00,Pending,Registered,Confirmed,Student discount coupon applied
+REG-2026-010,EVT-101,Meera Kulkarni,22BT014,meera.k@campus.edu,9876543219,Biotechnology,3,2026-11-18 10:20:00,Completed,Registered,Confirmed,Bioinformatics project
+REG-2026-011,EVT-101,Tanmay Sen,21CS115,tanmay.sen@campus.edu,9876543220,Computer Science,4,2026-11-18 13:00:00,Completed,Registered,Confirmed,DevSecOps
+REG-2026-012,EVT-101,Neha Bansal,23EC088,neha.bansal@campus.edu,9876543221,Electronics & Comm,2,2026-11-18 15:45:00,Completed,Registered,Confirmed,Embedded systems
+REG-2026-013,EVT-101,Rahul Gupta,22CE033,rahul.gupta@campus.edu,9876543222,Civil Engg,3,2026-11-19 11:10:00,Completed,Registered,Confirmed,Smart City GIS
+REG-2026-014,EVT-101,Ishita Bose,24AI022,ishita.bose@campus.edu,9876543223,Artificial Intelligence,1,2026-11-19 14:50:00,Completed,Registered,Confirmed,Computer Vision
+REG-2026-015,EVT-102,Arjun Kapoor,21ME001,arjun.k@campus.edu,9876543224,Mechanical Engg,4,2026-11-12 09:30:00,Completed,Registered,Confirmed,Bot Driver
+REG-2026-016,EVT-102,Siddharth Rao,21ME012,siddharth.r@campus.edu,9876543225,Mechanical Engg,4,2026-11-12 10:15:00,Completed,Registered,Confirmed,Kinematics design
+REG-2026-017,EVT-102,Kavya Nambiar,22EC055,kavya.n@campus.edu,9876543226,Electronics & Comm,3,2026-11-12 11:00:00,Completed,Registered,Confirmed,Circuit board fabrication
+REG-2026-018,EVT-102,Rishi Mukherjee,22EE021,rishi.m@campus.edu,9876543227,Electrical Engg,3,2026-11-13 14:00:00,Completed,Registered,Confirmed,Battery management
+REG-2026-019,EVT-102,Gaurav Mehta,23CS078,gaurav.m@campus.edu,9876543228,Computer Science,2,2026-11-13 15:30:00,Completed,Registered,Confirmed,ROS2 Control
+REG-2026-020,EVT-102,Priyanka Soni,23ME044,priyanka.s@campus.edu,9876543229,Mechanical Engg,2,2026-11-14 09:10:00,Completed,Registered,Confirmed,Pneumatics
+REG-2026-021,EVT-102,Nikhil Chawla,21EC090,nikhil.c@campus.edu,9876543230,Electronics & Comm,4,2026-11-14 11:45:00,Completed,Registered,Confirmed,RF Telemetry
+REG-2026-022,EVT-102,Sanya Taneja,22CS130,sanya.t@campus.edu,9876543231,Computer Science,3,2026-11-14 16:20:00,Completed,Registered,Confirmed,Autonomous Navigation
+REG-2026-023,EVT-102,Harsh Vardhan,24ME010,harsh.v@campus.edu,9876543232,Mechanical Engg,1,2026-11-15 08:30:00,Completed,Registered,Confirmed,Chassis assembly
+REG-2026-024,EVT-102,Shreya Das,23EE019,shreya.d@campus.edu,9876543233,Electrical Engg,2,2026-11-15 13:40:00,Completed,Registered,Confirmed,Motor drivers (10th seat)
+REG-2026-025,EVT-102,Ayush Saxena,24CS089,ayush.s@campus.edu,9876543234,Computer Science,1,2026-11-15 17:00:00,Pending,Registered,Waitlisted,Waitlist #1 - Full capacity reached
+REG-2026-026,EVT-103,Kabir Khanna,22BT002,kabir.k@campus.edu,9876543235,Biotechnology,3,2026-11-16 12:00:00,Exempt,Registered,Confirmed,Lead Vocalist - The Resonance
+REG-2026-027,EVT-103,Rhea Sengupta,23CS111,rhea.s@campus.edu,9876543236,Computer Science,2,2026-11-16 12:30:00,Exempt,Registered,Confirmed,Bass Guitarist
+REG-2026-028,EVT-103,Devendra Chauhan,21ME077,dev.c@campus.edu,9876543237,Mechanical Engg,4,2026-11-17 14:15:00,Exempt,Registered,Confirmed,Drummer
+REG-2026-029,EVT-103,Simran Gill,24MBA01,simran.g@campus.edu,9876543238,Management Studies,1,2026-11-17 15:45:00,Exempt,Registered,Confirmed,Keyboard & Synthesizer
+REG-2026-030,EVT-103,Varun Chopra,22EC066,varun.c@campus.edu,9876543239,Electronics & Comm,3,2026-11-18 09:20:00,Exempt,Registered,Confirmed,Lead Electric Guitar
+REG-2026-031,EVT-103,Akash Pillai,21CE015,akash.p@campus.edu,9876543240,Civil Engg,4,2026-11-18 10:10:00,Exempt,Cancelled,Cancelled,Cancelled: Conflict with end-sem lab exam
+REG-2026-032,EVT-104,Manish Pandey,22ME050,manish.p@campus.edu,9876543241,Mechanical Engg,3,2026-11-18 11:30:00,Completed,Registered,Confirmed,Men's Singles
+REG-2026-033,EVT-104,Tanvi Bhat,23CS019,tanvi.b@campus.edu,9876543242,Computer Science,2,2026-11-18 14:20:00,Completed,Registered,Confirmed,Women's Singles
+REG-2026-034,EVT-104,Yashwant Rao,21EE088,yashwant.r@campus.edu,9876543243,Electrical Engg,4,2026-11-19 16:00:00,Completed,Registered,Confirmed,Men's Doubles Team A
+REG-2026-035,EVT-104,Zoya Farooqui,24BT011,zoya.f@campus.edu,9876543244,Biotechnology,1,2026-11-20 09:40:00,Completed,Registered,Confirmed,Mixed Doubles
+REG-2026-036,EVT-104,Pranav Anand,22CS082,pranav.a@campus.edu,9876543245,Computer Science,3,2026-11-20 15:10:00,Pending,Registered,Confirmed,Payment via UPI pending verification
+REG-2026-037,EVT-105,Bhavna Trivedi,21IT023,bhavna.t@campus.edu,9876543246,Information Technology,4,2026-11-10 10:00:00,Completed,Attended,Confirmed,Completed lab exercises
+REG-2026-038,EVT-105,Chetan Bhagat,22CS144,chetan.b@campus.edu,9876543247,Computer Science,3,2026-11-11 11:30:00,Completed,Attended,Confirmed,Docker container certified
+REG-2026-039,EVT-105,Deepak Nanda,23EC011,deepak.n@campus.edu,9876543248,Electronics & Comm,2,2026-11-12 14:00:00,Pending,Absent,Confirmed,ANOMALY: Past deadline with pending payment
+REG-2026-040,EVT-106,Esha Malhotra,23MBA12,esha.m@campus.edu,9876543249,Management Studies,2,2026-11-19 10:15:00,Exempt,Registered,Confirmed,Pitching EdTech venture
+REG-2026-041,EVT-106,Farhan Akhtar,22CS190,farhan.a@campus.edu,9876543250,Computer Science,3,2026-11-19 11:30:00,Exempt,Registered,Confirmed,AI SaaS pitch
+REG-2026-042,EVT-106,Gita Radhakrishnan,21EE040,gita.r@campus.edu,9876543251,Electrical Engg,4,2026-11-20 13:20:00,Exempt,Registered,Confirmed,CleanTech battery storage
+REG-2026-043,EVT-106,Himanshu Tiwari,24MBA20,himanshu.t@campus.edu,9876543252,Management Studies,1,2026-11-20 14:45:00,Exempt,Registered,Confirmed,FinTech micro-loans
+REG-2026-044,EVT-106,Ira Trivedi,22BT029,ira.t@campus.edu,9876543253,Biotechnology,3,2026-11-21 16:00:00,Exempt,Registered,Confirmed,Bio-fertilizer AgriTech

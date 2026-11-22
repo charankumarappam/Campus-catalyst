@@ -1,0 +1,17 @@
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.bak
+
+# Streamlit Local Cache
+.streamlit/
+
+# OS specific
+Thumbs.db
+.DS_Store

@@ -1,0 +1,10 @@
+event_id,student_name,roll_number,email,phone,department,year_of_study,payment_status,notes
+EVT-103,Kunal Goswami,22CS210,kunal.g@campus.edu,9876543260,Computer Science,3,Completed,Valid entry
+EVT-106,Tarun Roy,23EE099,tarun.at.campus.com,9876543261,Electrical Engg,2,Completed,ERROR: Invalid email format
+EVT-104,Pallavi Joshi,24EC050,pallavi.j@campus.edu,9876543262,Electronics & Comm,1,Completed,Valid entry
+EVT-999,Madhav Dixit,21ME102,madhav.d@campus.edu,9876543263,Mechanical Engg,4,Completed,ERROR: Event EVT-999 does not exist
+EVT-106,Suresh Menon,22CE044,suresh.m@campus.edu,9876543264,Civil Engg,3,Completed,Valid entry
+EVT-103,Anita Deshmukh,23BT015,anita.d@campus.edu,12345,Biotechnology,2,Completed,ERROR: Phone number is only 5 digits
+EVT-104,Vipin Rawat,21CS301,vipin.r@campus.edu,9876543265,Computer Science,4,Completed,Valid entry
+EVT-106,,22IT077,nameless@campus.edu,9876543266,Information Technology,3,Completed,ERROR: Missing student name
+EVT-103,Lata Mangesh,24CS014,lata.m@campus.edu,9876543267,Computer Science,1,Completed,Valid entry
