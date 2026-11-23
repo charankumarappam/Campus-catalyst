@@ -43,7 +43,33 @@ st.markdown("""
         background-color: #F8FAFC;
     }
 
-    /* Hide default sidebar toggle if preferred or style it minimally */
+    /* 1. COMPLETELY ELIMINATE TOP SPACING & HIDE DEFAULT HEADER */
+    header[data-testid="stHeader"] {
+        display: none !important;
+        height: 0px !important;
+        visibility: hidden !important;
+    }
+    .stApp > header {
+        display: none !important;
+        height: 0px !important;
+    }
+    .main, .stMain, [data-testid="stMain"] {
+        padding-top: 0rem !important;
+        margin-top: 0rem !important;
+    }
+    .main .block-container,
+    [data-testid="stMainBlockContainer"],
+    [data-testid="block-container"],
+    div.block-container {
+        padding-top: 0.3rem !important;
+        padding-bottom: 2rem !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        max-width: 100% !important;
+        margin-top: 0rem !important;
+    }
+
+    /* Hide default sidebar toggle */
     [data-testid="collapsedControl"] {
         display: none !important;
     }
@@ -51,19 +77,19 @@ st.markdown("""
         display: none !important;
     }
 
-    /* Top Executive Sticky Header */
+    /* 2. TOP EXECUTIVE HEADER (Hugs Top Viewport) */
     .top-header-bar {
-        background: rgba(15, 23, 42, 0.95);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 16px 28px;
-        border-radius: 16px;
-        margin-bottom: 16px;
+        background: linear-gradient(135deg, #0B1120 0%, #0F172A 100%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 14px 24px;
+        border-radius: 16px 16px 0 0;
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25);
+        box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.3);
     }
     .top-brand {
         display: flex;
@@ -95,40 +121,47 @@ st.markdown("""
         letter-spacing: 0.05em;
         text-transform: uppercase;
     }
+
+    /* Animated sonar pulse for active system dot */
+    @keyframes sonarPing {
+        0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+        70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
     .system-pulse {
         display: inline-block;
         width: 8px;
         height: 8px;
         border-radius: 50%;
         background-color: #10B981;
-        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+        animation: sonarPing 2.2s infinite cubic-bezier(0.4, 0, 0.6, 1);
         margin-right: 6px;
+        vertical-align: middle;
     }
 
-    /* Sticky Animated Floating Glass Navigation Dock */
-    .stTabs {
-        position: relative;
+    /* 3. ATTACHED ANIMATED TOP NAVIGATION DOCK */
+    div[data-testid="stTabs"] {
+        margin-top: 0px !important;
     }
-    .stTabs [data-baseweb="tab-list"] {
-        position: sticky !important;
-        top: 8px !important;
-        z-index: 99999 !important;
-        background: rgba(11, 17, 32, 0.92) !important;
-        backdrop-filter: blur(24px) !important;
-        -webkit-backdrop-filter: blur(24px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.12) !important;
-        border-radius: 9999px !important;
+    div[data-testid="stTabs"] > div:first-child,
+    div[data-testid="stTabs"] [data-baseweb="tab-list"],
+    div[data-testid="stTabs"] div[role="tablist"] {
+        background: #0B1120 !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+        border-radius: 0 0 16px 16px !important;
         padding: 6px 12px !important;
         gap: 6px !important;
-        box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+        box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.35) !important;
         justify-content: center !important;
-        max-width: 1150px !important;
-        margin: 0 auto 24px auto !important;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        margin-bottom: 24px !important;
+        margin-top: 0px !important;
     }
-    .stTabs [data-baseweb="tab"] {
-        border-radius: 9999px !important;
-        padding: 9px 20px !important;
+    div[data-testid="stTabs"] button[role="tab"],
+    div[data-testid="stTabs"] button[data-baseweb="tab"],
+    div[data-testid="stTabs"] button[data-testid="stTab"] {
+        border-radius: 10px !important;
+        padding: 8px 18px !important;
         font-weight: 700 !important;
         font-size: 0.84rem !important;
         color: #94A3B8 !important;
@@ -137,31 +170,40 @@ st.markdown("""
         transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
         white-space: nowrap !important;
     }
-    .stTabs [data-baseweb="tab"]:hover {
+    div[data-testid="stTabs"] button[role="tab"]:hover,
+    div[data-testid="stTabs"] button[data-baseweb="tab"]:hover,
+    div[data-testid="stTabs"] button[data-testid="stTab"]:hover {
         color: #FFFFFF !important;
         background: rgba(255, 255, 255, 0.08) !important;
         transform: translateY(-2px) !important;
     }
-    .stTabs [aria-selected="true"] {
+    div[data-testid="stTabs"] button[aria-selected="true"] {
         background: linear-gradient(135deg, #4F46E5 0%, #3B82F6 100%) !important;
         color: #FFFFFF !important;
         font-weight: 800 !important;
         box-shadow: 0 4px 16px rgba(79, 70, 229, 0.5) !important;
         transform: translateY(-1px) scale(1.02) !important;
-        border-color: transparent !important;
     }
-    .stTabs [data-baseweb="tab-highlight"],
-    .stTabs [data-baseweb="tab-border"] {
+    div[data-testid="stTabs"] [data-baseweb="tab-highlight"],
+    div[data-testid="stTabs"] [data-baseweb="tab-border"],
+    div[data-testid="stTabs"] div[role="tablist"] + div {
         display: none !important;
     }
 
-    /* Tab Content View Fade-in Animation */
-    .stTabs [data-baseweb="tab-panel"] {
-        animation: tabFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    /* 4. SMOOTH VIEW TRANSITION ANIMATIONS */
+    div[data-testid="stTabs"] div[role="tabpanel"],
+    div[data-testid="stTabs"] [data-baseweb="tab-panel"] {
+        animation: smoothTabFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
     }
-    @keyframes tabFadeIn {
-        0% { opacity: 0; transform: translateY(10px); }
-        100% { opacity: 1; transform: translateY(0); }
+    @keyframes smoothTabFade {
+        0% {
+            opacity: 0;
+            transform: translateY(12px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     /* Executive Hero Banner */
