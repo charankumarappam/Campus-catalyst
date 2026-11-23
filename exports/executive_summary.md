@@ -1,5 +1,5 @@
 # Campus Catalyst: College Event Registration Executive Summary
-*Generated on: 2026-11-22 19:16:17*
+*Generated on: 2026-11-23 10:37:30*
 
 ## 1. High-Level Performance Indicators (KPIs)
 
@@ -50,8 +50,8 @@ Found **5** active alerts requiring attention:
 | :--- | :--- | :--- | :--- |
 | ⚠️ `WARNING` | `CAPACITY_NEARING` | **EVT-101** (HackCampus 2026: AI & Cloud Hackathon) | Event 'HackCampus 2026: AI & Cloud Hackathon' nearing capacity at 93.3% (14/15 seats occupied). |
 | 🔴 `CRITICAL` | `CAPACITY_FULL` | **EVT-102** (National Collegiate Robotics Challenge) | Event 'National Collegiate Robotics Challenge' is at 100% capacity (10/10 seats full). |
-| ⚠️ `WARNING` | `DEADLINE_IMMINENT` | **EVT-104** (Inter-Department Badminton Championship) | Registration deadline closes tomorrow (2026-11-23). |
-| 🔴 `CRITICAL` | `DEADLINE_EXPIRED` | **EVT-105** (Cloud DevOps & Kubernetes Hands-On Workshop) | Registration deadline passed on 2026-11-17 (5 day(s) ago). |
+| ⚠️ `WARNING` | `DEADLINE_IMMINENT` | **EVT-104** (Inter-Department Badminton Championship) | Registration deadline closes today (2026-11-23). |
+| 🔴 `CRITICAL` | `DEADLINE_EXPIRED` | **EVT-105** (Cloud DevOps & Kubernetes Hands-On Workshop) | Registration deadline passed on 2026-11-17 (6 day(s) ago). |
 | ⚠️ `WARNING` | `UNPAID_EXPIRED_DEADLINE` | **EVT-105** (Cloud DevOps & Kubernetes Hands-On Workshop) | Participant Deepak Nanda (23EC011) has unpaid fee of ₹150.00 past deadline. |
 
 ---
