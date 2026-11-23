@@ -581,7 +581,7 @@ with tab_overview:
                 
                 <div style="display:flex; justify-content:space-between; font-size:0.78rem; font-weight:700; color:#334155; margin-bottom:4px;">
                     <span>Bookings: {conf} / {ev.max_capacity} Seats</span>
-                    <span style="color:{badge_color};">{pct:.1f}%</span>
+                    <span style="color:{badge_color};">{pct:.1f}% ({max(0, ev.max_capacity - conf)} available)</span>
                 </div>
                 <div style="background:#F1F5F9; border-radius:10px; height:8px; overflow:hidden; margin-bottom:8px;">
                     <div style="background:{bar_color}; width:{min(100, pct):.1f}%; height:100%; border-radius:10px;"></div>
@@ -742,22 +742,45 @@ with tab_wizard:
     if not engine.events:
         st.warning("No active events found. Please create an event first.")
     else:
-        event_dict = {f"{e.event_id} — {e.title} ({e.venue})": e for e in engine.events}
+        event_dict = {
+            f"{e.event_id} — {e.title} [{engine.get_event_confirmed_count(e.event_id)}/{e.max_capacity} Booked • {max(0, e.max_capacity - engine.get_event_confirmed_count(e.event_id))} Available]": e
+            for e in engine.events
+        }
         selected_key = st.selectbox("Select Target Event *", list(event_dict.keys()))
         selected_event = event_dict[selected_key]
 
         confirmed = engine.get_event_confirmed_count(selected_event.event_id)
         seats_left = max(0, selected_event.max_capacity - confirmed)
         is_sold_out = confirmed >= selected_event.max_capacity
+        pct_occupied = (confirmed / selected_event.max_capacity * 100) if selected_event.max_capacity > 0 else 0.0
 
-        m1, m2, m3 = st.columns(3)
-        m1.metric("Available Seats", f"{seats_left} / {selected_event.max_capacity}")
-        m2.metric("Registration Fee", f"₹{selected_event.fee:.2f}")
-        with m3:
+        m1, m2, m3, m4 = st.columns(4)
+        m1.metric(
+            label="Confirmed Bookings",
+            value=f"{confirmed} / {selected_event.max_capacity} Seats",
+            delta=f"{pct_occupied:.1f}% Occupied",
+            delta_color="off"
+        )
+        m2.metric(
+            label="Remaining Available",
+            value=f"{seats_left} Seat" if seats_left == 1 else f"{seats_left} Seats",
+            delta="Sold Out (Waitlist)" if seats_left == 0 else "Open for Enrollment",
+            delta_color="inverse" if seats_left == 0 else "normal"
+        )
+        m3.metric(
+            label="Registration Fee",
+            value="FREE" if selected_event.fee == 0 else f"₹{selected_event.fee:.2f}"
+        )
+        with m4:
             if is_sold_out:
-                st.markdown('<div style="margin-top:22px;"><span style="background:#FEE2E2; color:#DC2626; padding:4px 12px; border-radius:20px; font-weight:700; font-size:0.8rem;">⚠️ Full: Auto-Waitlist Active</span></div>', unsafe_allow_html=True)
+                st.markdown('<div style="margin-top:16px;"><span style="background:#FEE2E2; color:#DC2626; border:1px solid #FCA5A5; padding:6px 12px; border-radius:20px; font-weight:800; font-size:0.78rem; display:inline-block;">🔴 SOLD OUT (WAITLIST ONLY)</span></div>', unsafe_allow_html=True)
+            elif pct_occupied >= 85:
+                st.markdown(f'<div style="margin-top:16px;"><span style="background:#FEF3C7; color:#B45309; border:1px solid #FCD34D; padding:6px 12px; border-radius:20px; font-weight:800; font-size:0.78rem; display:inline-block;">⚠️ ONLY {seats_left} SEAT REMAINING</span></div>', unsafe_allow_html=True)
             else:
-                st.markdown('<div style="margin-top:22px;"><span style="background:#DCFCE7; color:#15803D; padding:4px 12px; border-radius:20px; font-weight:700; font-size:0.8rem;">✅ Seats Confirmed Upon Submit</span></div>', unsafe_allow_html=True)
+                st.markdown('<div style="margin-top:16px;"><span style="background:#DCFCE7; color:#15803D; border:1px solid #86EFAC; padding:6px 12px; border-radius:20px; font-weight:800; font-size:0.78rem; display:inline-block;">🟢 REGISTRATIONS OPEN</span></div>', unsafe_allow_html=True)
+
+        st.caption(f"**Seat Capacity:** {confirmed} confirmed of {selected_event.max_capacity} maximum seats ({pct_occupied:.1f}% occupied). Exactly **{seats_left}** general seat remaining.")
+        st.progress(min(confirmed / selected_event.max_capacity, 1.0))
 
         st.write("")
         with st.form("student_registration_form"):
