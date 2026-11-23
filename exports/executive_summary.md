@@ -1,18 +1,18 @@
 # Campus Catalyst: College Event Registration Executive Summary
-*Generated on: 2026-11-23 10:37:30*
+*Generated on: 2026-11-23 11:40:50*
 
 ## 1. High-Level Performance Indicators (KPIs)
 
 | Metric | Value |
 | :--- | :--- |
-| **Total Managed Events** | 6 |
+| **Total Managed Events** | 8 |
 | **Total Registrations** | 44 |
 | **Active / Confirmed Registrations** | 43 |
 | **Waitlisted Registrations** | 1 |
 | **Cancelled Registrations** | 1 |
-| **Total Seat Capacity Across Events** | 131 |
-| **Overall Seat Utilization Rate** | 32.1% |
-| **Average Registrations per Event** | 7.2 |
+| **Total Seat Capacity Across Events** | 191 |
+| **Overall Seat Utilization Rate** | 22.0% |
+| **Average Registrations per Event** | 5.4 |
 | **Total Projected Revenue** | ₹9,950.00 |
 | **Revenue Collected** | ₹8,950.00 |
 | **Pending Revenue** | ₹1,000.00 |
@@ -27,6 +27,8 @@
 | `EVT-104` | **Inter-Department Badminton Championship** | Sports | 16 | 5 | 0 | 31.2% | ₹100.00 | 2026-11-23 |
 | `EVT-105` | **Cloud DevOps & Kubernetes Hands-On Workshop** | Workshop | 20 | 3 | 0 | 15.0% | ₹150.00 | 2026-11-17 |
 | `EVT-106` | **Venture Spark: Startup Pitch Deck Summit** | Seminar | 40 | 5 | 0 | 12.5% | ₹0.00 | 2026-12-14 |
+| `EVT-107` | **charan's hackathon** | Technical | 30 | 0 | 0 | 0.0% | ₹8000.00 | 2026-11-23 |
+| `EVT-108` | **charan** | Technical | 30 | 0 | 0 | 0.0% | ₹0.00 | 2026-11-23 |
 
 ## 3. Department Participation Breakdown
 
@@ -44,7 +46,7 @@
 
 ## 4. Operational Threshold & Anomaly Alerts
 
-Found **5** active alerts requiring attention:
+Found **7** active alerts requiring attention:
 
 | Severity | Code | Target Event | Message |
 | :--- | :--- | :--- | :--- |
@@ -52,6 +54,8 @@ Found **5** active alerts requiring attention:
 | 🔴 `CRITICAL` | `CAPACITY_FULL` | **EVT-102** (National Collegiate Robotics Challenge) | Event 'National Collegiate Robotics Challenge' is at 100% capacity (10/10 seats full). |
 | ⚠️ `WARNING` | `DEADLINE_IMMINENT` | **EVT-104** (Inter-Department Badminton Championship) | Registration deadline closes today (2026-11-23). |
 | 🔴 `CRITICAL` | `DEADLINE_EXPIRED` | **EVT-105** (Cloud DevOps & Kubernetes Hands-On Workshop) | Registration deadline passed on 2026-11-17 (6 day(s) ago). |
+| ⚠️ `WARNING` | `DEADLINE_IMMINENT` | **EVT-107** (charan's hackathon) | Registration deadline closes today (2026-11-23). |
+| ⚠️ `WARNING` | `DEADLINE_IMMINENT` | **EVT-108** (charan) | Registration deadline closes today (2026-11-23). |
 | ⚠️ `WARNING` | `UNPAID_EXPIRED_DEADLINE` | **EVT-105** (Cloud DevOps & Kubernetes Hands-On Workshop) | Participant Deepak Nanda (23EC011) has unpaid fee of ₹150.00 past deadline. |
 
 ---

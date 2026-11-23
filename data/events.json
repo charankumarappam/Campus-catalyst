@@ -64,5 +64,27 @@
     "venue": "Management Studies Executive Hall",
     "fee": 0.0,
     "created_at": "2026-11-17 16:20:00"
+  },
+  {
+    "event_id": "EVT-107",
+    "title": "charan's hackathon",
+    "category": "Technical",
+    "event_date": "2026-11-23",
+    "registration_deadline": "2026-11-23",
+    "max_capacity": 30,
+    "venue": "mrv",
+    "fee": 8000.0,
+    "created_at": "2026-11-23 11:15:30"
+  },
+  {
+    "event_id": "EVT-108",
+    "title": "charan",
+    "category": "Technical",
+    "event_date": "2026-11-23",
+    "registration_deadline": "2026-11-23",
+    "max_capacity": 30,
+    "venue": "mrv",
+    "fee": 0.0,
+    "created_at": "2026-11-23 11:15:49"
   }
 ]
