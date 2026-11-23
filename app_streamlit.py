@@ -147,12 +147,12 @@ st.markdown("""
     div[data-testid="stTabs"] [data-baseweb="tab-list"],
     div[data-testid="stTabs"] div[role="tablist"] {
         background: #0B1120 !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
         border-radius: 0 0 16px 16px !important;
-        padding: 6px 12px !important;
-        gap: 6px !important;
-        box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.35) !important;
+        padding: 8px 14px !important;
+        gap: 8px !important;
+        box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.45) !important;
         justify-content: center !important;
         margin-bottom: 24px !important;
         margin-top: 0px !important;
@@ -160,30 +160,55 @@ st.markdown("""
     div[data-testid="stTabs"] button[role="tab"],
     div[data-testid="stTabs"] button[data-baseweb="tab"],
     div[data-testid="stTabs"] button[data-testid="stTab"] {
-        border-radius: 10px !important;
-        padding: 8px 18px !important;
+        border-radius: 12px !important;
+        padding: 9px 20px !important;
         font-weight: 700 !important;
-        font-size: 0.84rem !important;
-        color: #94A3B8 !important;
-        background: transparent !important;
-        border: none !important;
+        font-size: 0.88rem !important;
+        color: #FFFFFF !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
         transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
         white-space: nowrap !important;
+        cursor: pointer !important;
     }
+    
+    /* Force ALL child text (p, span, div) inside tabs to be pure bright white and legible */
+    div[data-testid="stTabs"] button *,
+    div[data-testid="stTabs"] [data-baseweb="tab"] *,
+    div[data-testid="stTabs"] button p,
+    div[data-testid="stTabs"] button span,
+    div[data-testid="stTabs"] [role="tab"] p,
+    div[data-testid="stTabs"] [role="tab"] span {
+        color: #FFFFFF !important;
+        font-weight: 700 !important;
+        font-size: 0.88rem !important;
+        letter-spacing: -0.01em !important;
+    }
+
     div[data-testid="stTabs"] button[role="tab"]:hover,
     div[data-testid="stTabs"] button[data-baseweb="tab"]:hover,
     div[data-testid="stTabs"] button[data-testid="stTab"]:hover {
-        color: #FFFFFF !important;
-        background: rgba(255, 255, 255, 0.08) !important;
+        background: rgba(255, 255, 255, 0.18) !important;
+        border-color: #38BDF8 !important;
         transform: translateY(-2px) !important;
     }
+    div[data-testid="stTabs"] button:hover * {
+        color: #38BDF8 !important;
+    }
+
     div[data-testid="stTabs"] button[aria-selected="true"] {
         background: linear-gradient(135deg, #4F46E5 0%, #3B82F6 100%) !important;
         color: #FFFFFF !important;
         font-weight: 800 !important;
-        box-shadow: 0 4px 16px rgba(79, 70, 229, 0.5) !important;
+        box-shadow: 0 4px 18px rgba(79, 70, 229, 0.6) !important;
+        border-color: rgba(255, 255, 255, 0.3) !important;
         transform: translateY(-1px) scale(1.02) !important;
     }
+    div[data-testid="stTabs"] button[aria-selected="true"] * {
+        color: #FFFFFF !important;
+        font-weight: 800 !important;
+    }
+
     div[data-testid="stTabs"] [data-baseweb="tab-highlight"],
     div[data-testid="stTabs"] [data-baseweb="tab-border"],
     div[data-testid="stTabs"] div[role="tablist"] + div {
