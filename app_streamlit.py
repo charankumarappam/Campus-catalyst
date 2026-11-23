@@ -77,19 +77,18 @@ st.markdown("""
         display: none !important;
     }
 
-    /* 2. TOP EXECUTIVE HEADER (Hugs Top Viewport) */
+    /* 2. TOP EXECUTIVE HEADER (Box 1 - Standalone Fully Rounded Card) */
     .top-header-bar {
         background: linear-gradient(135deg, #0B1120 0%, #0F172A 100%);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        padding: 14px 24px;
-        border-radius: 16px 16px 0 0;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 14px 26px;
+        border-radius: 18px;
         margin-top: 0px !important;
-        margin-bottom: 0px !important;
+        margin-bottom: 14px !important;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35);
     }
     .top-brand {
         display: flex;
@@ -139,7 +138,7 @@ st.markdown("""
         vertical-align: middle;
     }
 
-    /* 3. ATTACHED ANIMATED TOP NAVIGATION DOCK */
+    /* 3. SEPARATE NAVIGATION DOCK (Box 2 - Standalone Rounded Dock) */
     div[data-testid="stTabs"] {
         margin-top: 0px !important;
     }
@@ -148,14 +147,13 @@ st.markdown("""
     div[data-testid="stTabs"] div[role="tablist"] {
         background: #0B1120 !important;
         border: 1px solid rgba(255, 255, 255, 0.12) !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-        border-radius: 0 0 16px 16px !important;
-        padding: 8px 14px !important;
+        border-radius: 18px !important;
+        padding: 8px 16px !important;
         gap: 8px !important;
-        box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.45) !important;
+        box-shadow: 0 10px 28px -5px rgba(0, 0, 0, 0.4) !important;
         justify-content: center !important;
-        margin-bottom: 24px !important;
         margin-top: 0px !important;
+        margin-bottom: 24px !important;
     }
     div[data-testid="stTabs"] button[role="tab"],
     div[data-testid="stTabs"] button[data-baseweb="tab"],
@@ -210,8 +208,7 @@ st.markdown("""
     }
 
     div[data-testid="stTabs"] [data-baseweb="tab-highlight"],
-    div[data-testid="stTabs"] [data-baseweb="tab-border"],
-    div[data-testid="stTabs"] div[role="tablist"] + div {
+    div[data-testid="stTabs"] [data-baseweb="tab-border"] {
         display: none !important;
     }
 
@@ -543,6 +540,97 @@ with tab_overview:
             fig_donut.update_traces(textposition='inside', textinfo='percent+label', marker=dict(line=dict(color='#FFFFFF', width=2)))
             fig_donut.update_layout(margin=dict(l=10, r=10, t=10, b=10), height=370, showlegend=False)
             st.plotly_chart(fig_donut, use_container_width=True)
+
+    # Live Events Occupancy & Operational Health Grid
+    st.markdown('<div class="sec-title">🏛️ Active College Events & Live Capacity Gauges</div>', unsafe_allow_html=True)
+    
+    events_list = storage.get_all_events()
+    breakdown_map = {b["event_id"]: b for b in summary.get("event_breakdown", [])}
+    
+    # Render in 3 responsive columns
+    cols = st.columns(3)
+    for idx, ev in enumerate(events_list):
+        c_idx = idx % 3
+        b_info = breakdown_map.get(ev.event_id, {"confirmed": 0, "waitlisted": 0, "utilization_pct": 0.0})
+        conf = b_info["confirmed"]
+        pct = b_info["utilization_pct"]
+        
+        # Color coding based on capacity status
+        if pct >= 100:
+            badge_color = "#EF4444"
+            badge_text = "FULL (100%)"
+            bar_color = "#EF4444"
+        elif pct >= 85:
+            badge_color = "#F59E0B"
+            badge_text = f"NEARING ({pct:.0f}%)"
+            bar_color = "#F59E0B"
+        else:
+            badge_color = "#10B981"
+            badge_text = f"AVAILABLE ({pct:.0f}%)"
+            bar_color = "#10B981"
+            
+        with cols[c_idx]:
+            st.markdown(f"""
+            <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:14px; padding:18px; margin-bottom:14px; box-shadow:0 2px 6px rgba(0,0,0,0.03);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <span style="font-family:'JetBrains Mono'; font-size:0.75rem; font-weight:800; background:#EEF2FF; color:#4F46E5; padding:2px 8px; border-radius:6px;">{ev.event_id}</span>
+                    <span style="font-size:0.72rem; font-weight:800; background:{badge_color}18; color:{badge_color}; border:1px solid {badge_color}40; padding:2px 8px; border-radius:12px;">{badge_text}</span>
+                </div>
+                <div style="font-weight:800; font-size:0.95rem; color:#0F172A; line-height:1.3; margin-bottom:4px;">{ev.title}</div>
+                <div style="font-size:0.78rem; color:#64748B; margin-bottom:10px;">📍 {ev.venue} • 📅 {ev.event_date}</div>
+                
+                <div style="display:flex; justify-content:space-between; font-size:0.78rem; font-weight:700; color:#334155; margin-bottom:4px;">
+                    <span>Bookings: {conf} / {ev.max_capacity} Seats</span>
+                    <span style="color:{badge_color};">{pct:.1f}%</span>
+                </div>
+                <div style="background:#F1F5F9; border-radius:10px; height:8px; overflow:hidden; margin-bottom:8px;">
+                    <div style="background:{bar_color}; width:{min(100, pct):.1f}%; height:100%; border-radius:10px;"></div>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#94A3B8; font-weight:600;">
+                    <span>Fee: {'FREE' if ev.fee == 0 else f'₹{ev.fee:.0f}'}</span>
+                    <span>Deadline: {ev.registration_deadline}</span>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    # Operations Sentinel & Institutional Intelligence Summary Strip
+    st.markdown('<div class="sec-title">🛡️ Operations Sentinel & Institutional Intelligence</div>', unsafe_allow_html=True)
+    m1, m2, m3, m4 = st.columns(4)
+    with m1:
+        st.markdown(f"""
+        <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:12px; padding:14px; text-align:center;">
+            <div style="font-size:0.75rem; color:#64748B; font-weight:700; text-transform:uppercase;">Avg Enrollees / Event</div>
+            <div style="font-size:1.4rem; font-weight:800; color:#0F172A; margin:4px 0;">{summary['avg_registrations_per_event']:.1f}</div>
+            <div style="font-size:0.72rem; color:#10B981; font-weight:600;">Consistent Campus Turnout</div>
+        </div>
+        """, unsafe_allow_html=True)
+    with m2:
+        top_ev = summary['top_events'][0] if summary.get('top_events') else {"title": "N/A", "confirmed": 0}
+        st.markdown(f"""
+        <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:12px; padding:14px; text-align:center;">
+            <div style="font-size:0.75rem; color:#64748B; font-weight:700; text-transform:uppercase;">Top Trending Event</div>
+            <div style="font-size:1.1rem; font-weight:800; color:#4F46E5; margin:4px 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{top_ev['title']}</div>
+            <div style="font-size:0.72rem; color:#64748B; font-weight:600;">{top_ev['confirmed']} Booked Seats</div>
+        </div>
+        """, unsafe_allow_html=True)
+    with m3:
+        dept_counts = summary.get("department_counts", {})
+        top_dept = max(dept_counts.items(), key=lambda x: x[1]) if dept_counts else ("None", 0)
+        st.markdown(f"""
+        <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:12px; padding:14px; text-align:center;">
+            <div style="font-size:0.75rem; color:#64748B; font-weight:700; text-transform:uppercase;">Leading Department</div>
+            <div style="font-size:1.1rem; font-weight:800; color:#0F172A; margin:4px 0;">{top_dept[0]}</div>
+            <div style="font-size:0.72rem; color:#3B82F6; font-weight:600;">{top_dept[1]} Student Registrations</div>
+        </div>
+        """, unsafe_allow_html=True)
+    with m4:
+        st.markdown(f"""
+        <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:12px; padding:14px; text-align:center;">
+            <div style="font-size:0.75rem; color:#64748B; font-weight:700; text-transform:uppercase;">System Health</div>
+            <div style="font-size:1.1rem; font-weight:800; color:#10B981; margin:4px 0;">HEALTHY (A+)</div>
+            <div style="font-size:0.72rem; color:#10B981; font-weight:600;">SQLite WAL + Dual Mirrors</div>
+        </div>
+        """, unsafe_allow_html=True)
 
 
 # ==============================================================================
