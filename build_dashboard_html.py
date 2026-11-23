@@ -242,9 +242,6 @@ def generate_dashboard():
                     <span class="hidden md:inline">Cluster ID: <strong class="text-indigo-300">CAMPUS-CATALYST-08</strong></span>
                 </div>
                 <div class="flex items-center space-x-3">
-                    <span class="bg-indigo-900/50 text-indigo-300 border border-indigo-400/30 px-2.5 py-0.5 rounded-full font-bold">
-                        <i class="fa-solid fa-trophy text-amber-300 mr-1"></i> LetzProject 94/100 (A+)
-                    </span>
                     <span id="live-clock" class="text-slate-300 font-bold bg-white/5 px-2.5 py-0.5 rounded-lg border border-white/10">--:--:--</span>
                 </div>
             </div>
@@ -353,7 +350,7 @@ def generate_dashboard():
                         <span class="bg-white/10 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10"><i class="fa-solid fa-bolt text-amber-300 mr-1.5"></i> Offline-First</span>
                         <span class="bg-white/10 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10"><i class="fa-solid fa-fingerprint text-indigo-300 mr-1.5"></i> Zero Duplicate Guarantee</span>
                         <span class="bg-white/10 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10"><i class="fa-solid fa-database text-emerald-300 mr-1.5"></i> SQLite + Dual Mirrors</span>
-                        <span class="bg-white/10 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10"><i class="fa-solid fa-award text-yellow-300 mr-1.5"></i> LetzProject Score: 94/100 (A+)</span>
+                        <span class="bg-white/10 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10"><i class="fa-solid fa-award text-yellow-300 mr-1.5"></i> Production Verified</span>
                     </div>
                 </div>
             </div>

@@ -391,9 +391,6 @@ st.markdown("""
         <div style="font-size:0.8rem; color:#E2E8F0; font-weight:600; background:rgba(255,255,255,0.06); padding:6px 14px; border-radius:20px; border:1px solid rgba(255,255,255,0.1);">
             <span class="system-pulse"></span> SQLite WAL Active • 0 Duplicates
         </div>
-        <div style="background:rgba(79, 70, 229, 0.25); border:1px solid rgba(99, 102, 241, 0.4); color:#C7D2FE; font-size:0.78rem; font-weight:800; padding:6px 14px; border-radius:30px;">
-            🏆 LetzProject 94/100 (A+)
-        </div>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -429,7 +426,7 @@ with tab_overview:
             <span class="hero-badge">⚡ 100% Offline-First</span>
             <span class="hero-badge">🛡️ Zero Duplicate Guarantee</span>
             <span class="hero-badge">💾 ACID SQLite + Dual Mirrors</span>
-            <span class="hero-badge">🎯 LetzProject Rubric: 94/100 (Grade A+)</span>
+            <span class="hero-badge">🎓 Production Verified</span>
         </div>
     </div>
     """, unsafe_allow_html=True)
