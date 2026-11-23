@@ -12,6 +12,6 @@ __pycache__/
 # Streamlit Local Cache
 # .streamlit/
 
-# OS specific
-Thumbs.db
-.DS_Store
+# Archives
+*.zip
+*.tar.gz
