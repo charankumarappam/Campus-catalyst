@@ -410,3 +410,7 @@ class StorageManager:
 
     def _validate_registration_schema(self, item: Dict[str, Any]) -> bool:
         return self.REQUIRED_REG_FIELDS.issubset(item.keys())
+
+    # Aliases for convenience
+    get_all_events = load_events
+    get_all_registrations = load_registrations

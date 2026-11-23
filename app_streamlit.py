@@ -544,7 +544,7 @@ with tab_overview:
     # Live Events Occupancy & Operational Health Grid
     st.markdown('<div class="sec-title">🏛️ Active College Events & Live Capacity Gauges</div>', unsafe_allow_html=True)
     
-    events_list = storage.get_all_events()
+    events_list = storage.load_events()
     breakdown_map = {b["event_id"]: b for b in summary.get("event_breakdown", [])}
     
     # Render in 3 responsive columns
