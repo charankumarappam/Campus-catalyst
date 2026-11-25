@@ -1,5 +1,5 @@
 # Campus Catalyst: College Event Registration Executive Summary
-*Generated on: 2026-11-23 11:40:50*
+*Generated on: 2026-11-25 18:38:43*
 
 ## 1. High-Level Performance Indicators (KPIs)
 
@@ -46,16 +46,17 @@
 
 ## 4. Operational Threshold & Anomaly Alerts
 
-Found **7** active alerts requiring attention:
+Found **8** active alerts requiring attention:
 
 | Severity | Code | Target Event | Message |
 | :--- | :--- | :--- | :--- |
 | ⚠️ `WARNING` | `CAPACITY_NEARING` | **EVT-101** (HackCampus 2026: AI & Cloud Hackathon) | Event 'HackCampus 2026: AI & Cloud Hackathon' nearing capacity at 93.3% (14/15 seats occupied). |
 | 🔴 `CRITICAL` | `CAPACITY_FULL` | **EVT-102** (National Collegiate Robotics Challenge) | Event 'National Collegiate Robotics Challenge' is at 100% capacity (10/10 seats full). |
-| ⚠️ `WARNING` | `DEADLINE_IMMINENT` | **EVT-104** (Inter-Department Badminton Championship) | Registration deadline closes today (2026-11-23). |
-| 🔴 `CRITICAL` | `DEADLINE_EXPIRED` | **EVT-105** (Cloud DevOps & Kubernetes Hands-On Workshop) | Registration deadline passed on 2026-11-17 (6 day(s) ago). |
-| ⚠️ `WARNING` | `DEADLINE_IMMINENT` | **EVT-107** (charan's hackathon) | Registration deadline closes today (2026-11-23). |
-| ⚠️ `WARNING` | `DEADLINE_IMMINENT` | **EVT-108** (charan) | Registration deadline closes today (2026-11-23). |
+| 🔴 `CRITICAL` | `DEADLINE_EXPIRED` | **EVT-104** (Inter-Department Badminton Championship) | Registration deadline passed on 2026-11-23 (2 day(s) ago). |
+| 🔴 `CRITICAL` | `DEADLINE_EXPIRED` | **EVT-105** (Cloud DevOps & Kubernetes Hands-On Workshop) | Registration deadline passed on 2026-11-17 (8 day(s) ago). |
+| 🔴 `CRITICAL` | `DEADLINE_EXPIRED` | **EVT-107** (charan's hackathon) | Registration deadline passed on 2026-11-23 (2 day(s) ago). |
+| 🔴 `CRITICAL` | `DEADLINE_EXPIRED` | **EVT-108** (charan) | Registration deadline passed on 2026-11-23 (2 day(s) ago). |
+| ⚠️ `WARNING` | `UNPAID_EXPIRED_DEADLINE` | **EVT-104** (Inter-Department Badminton Championship) | Participant Pranav Anand (22CS082) has unpaid fee of ₹100.00 past deadline. |
 | ⚠️ `WARNING` | `UNPAID_EXPIRED_DEADLINE` | **EVT-105** (Cloud DevOps & Kubernetes Hands-On Workshop) | Participant Deepak Nanda (23EC011) has unpaid fee of ₹150.00 past deadline. |
 
 ---
