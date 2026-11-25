@@ -391,13 +391,13 @@ def add_caption_h(doc, text):
 def add_code_block(doc, code_str):
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.LEFT
-    p.paragraph_format.line_spacing = 1.15
-    p.paragraph_format.space_before = Pt(4)
-    p.paragraph_format.space_after = Pt(8)
-    p.paragraph_format.left_indent = Inches(0.2)
+    p.paragraph_format.line_spacing = 1.05
+    p.paragraph_format.space_before = Pt(2)
+    p.paragraph_format.space_after = Pt(4)
+    p.paragraph_format.left_indent = Inches(0.15)
     r = p.add_run(code_str)
     r.font.name = 'Consolas'
-    r.font.size = Pt(9)
+    r.font.size = Pt(8.0)
     r.font.color.rgb = RGBColor(0x1E, 0x29, 0x3B)
     return p
 
@@ -679,18 +679,18 @@ def build_exact_docx_report():
     h11[2].text = "Purpose"
 
     t11_rows = [
-        ("streamlit", "1.30.0+", "Interactive reactive web application framework powering the administrative portal and registration desk"),
-        ("plotly", "5.18.0+", "Renders live seat capacity gauges and department breakdown charts (app_streamlit.py)"),
+        ("streamlit", "1.30.0+", "Interactive reactive web application framework powering portal"),
+        ("plotly", "5.18.0+", "Renders live seat capacity gauges and department breakdown charts"),
         ("pandas", "2.1.0+", "Tabular data filtering, search sorting, and registration aggregations"),
-        ("matplotlib", "3.7+ (tested 3.11.2)", "Draws the architectural block diagram, flowchart, and publication charts"),
-        ("sqlite3", "Standard library", "Embedded relational database running in Write-Ahead Logging (WAL) mode for atomic transactions"),
-        ("json", "Standard library", "Saves and loads events and attendees mirror state (storage.py)"),
-        ("csv", "Standard library", "Reads CSV files for bulk attendee import and writes student roster exports"),
-        ("datetime", "Standard library", "Validates event timestamps and generates transaction booking stamps"),
-        ("re", "Standard library", "Regular expressions for roll number, email RFC, and phone sanity checking"),
-        ("dataclasses", "Standard library", "Defines Event, Attendee, and Registration records (models.py)"),
-        ("pathlib, os", "Standard library", "Cross-platform file paths and atomic safe saving via temporary replacement"),
-        ("unittest", "Standard library", "Runs the 16 automated tests in test_suite.py")
+        ("matplotlib", "3.7+ (3.11.2)", "Draws block diagram, flowchart, and publication charts"),
+        ("sqlite3", "Standard", "Relational database in Write-Ahead Logging (WAL) mode"),
+        ("json", "Standard", "Saves and loads events and attendees mirror state (storage.py)"),
+        ("csv", "Standard", "Reads CSV for bulk import and writes student roster exports"),
+        ("datetime", "Standard", "Validates event timestamps and generates booking stamps"),
+        ("re", "Standard", "Regular expressions for roll number, email RFC, and phone sanity"),
+        ("dataclasses", "Standard", "Defines Event, Attendee, and Registration records (models.py)"),
+        ("pathlib, os", "Standard", "File paths and atomic safe saving via temporary replacement"),
+        ("unittest", "Standard", "Runs the 16 automated tests in test_suite.py")
     ]
 
     for c in h11:
@@ -700,7 +700,7 @@ def build_exact_docx_report():
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         for r in p.runs:
             r.font.name = 'Times New Roman'
-            r.font.size = Pt(10)
+            r.font.size = Pt(9.5)
             r.font.bold = True
 
     for lib, ver, pur in t11_rows:
@@ -713,20 +713,19 @@ def build_exact_docx_report():
             set_cell_border(c, top=dict(sz=2, color="BCCCDC"), bottom=dict(sz=2, color="BCCCDC"))
             p = c.paragraphs[0]
             p.alignment = WD_ALIGN_PARAGRAPH.LEFT if idx != 1 else WD_ALIGN_PARAGRAPH.CENTER
-            p.paragraph_format.line_spacing = 1.15
+            p.paragraph_format.line_spacing = 1.05
+            p.paragraph_format.space_before = Pt(1)
+            p.paragraph_format.space_after = Pt(1)
             for r in p.runs:
                 r.font.name = 'Times New Roman'
-                r.font.size = Pt(9)
+                r.font.size = Pt(8.5)
                 if idx == 0:
                     r.font.bold = True
-
-    p_sp = doc.add_paragraph()
-    p_sp.paragraph_format.space_before = Pt(4)
-    p_sp.paragraph_format.space_after = Pt(4)
 
     add_side_h(doc, "1.5 Hardware Requirements")
     add_body_p(doc,
                "The application is light-weight: it handles event registrations in an embedded SQLite database and local files, and needs no external cloud network after dependencies are installed. Table 1.2 gives the minimum specification.")
+
 
     # -------------------------------------------------------------
     # PAGE 6 (Body Page 3): Table 1.2 Hardware Requirements
@@ -1025,7 +1024,7 @@ def build_exact_docx_report():
     p_f43.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_f43.paragraph_format.space_before = Pt(2)
     p_f43.paragraph_format.space_after = Pt(2)
-    p_f43.add_run().add_picture(str(ASSETS_DIR / "fig_4_3_validation.png"), width=Inches(5.4))
+    p_f43.add_run().add_picture(str(ASSETS_DIR / "fig_4_3_validation.png"), width=Inches(4.6))
     add_caption_h(doc, "Fig 4.3: Input validation while registering a student")
 
     add_body_p(doc,
@@ -1035,7 +1034,7 @@ def build_exact_docx_report():
     p_f44.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_f44.paragraph_format.space_before = Pt(2)
     p_f44.paragraph_format.space_after = Pt(2)
-    p_f44.add_run().add_picture(str(ASSETS_DIR / "fig_4_4_csv_import.png"), width=Inches(5.4))
+    p_f44.add_run().add_picture(str(ASSETS_DIR / "fig_4_4_csv_import.png"), width=Inches(4.6))
     add_caption_h(doc, "Fig 4.4: Bulk CSV import with rejected rows")
 
     # -------------------------------------------------------------
@@ -1049,7 +1048,7 @@ def build_exact_docx_report():
     p_f45.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_f45.paragraph_format.space_before = Pt(4)
     p_f45.paragraph_format.space_after = Pt(2)
-    p_f45.add_run().add_picture(str(ASSETS_DIR / "fig_4_5_summary.png"), width=Inches(5.6))
+    p_f45.add_run().add_picture(str(ASSETS_DIR / "fig_4_5_summary.png"), width=Inches(5.2))
     add_caption_h(doc, "Fig 4.5: Executive summary report for November 2026")
 
     add_body_p(doc,
@@ -1063,7 +1062,7 @@ def build_exact_docx_report():
     p_f46.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_f46.paragraph_format.space_before = Pt(2)
     p_f46.paragraph_format.space_after = Pt(2)
-    p_f46.add_run().add_picture(str(ASSETS_DIR / "fig_4_6_search.png"), width=Inches(5.4))
+    p_f46.add_run().add_picture(str(ASSETS_DIR / "fig_4_6_search.png"), width=Inches(4.6))
     add_caption_h(doc, "Fig 4.6: Search by keyword and department")
 
     add_body_p(doc,
@@ -1073,7 +1072,7 @@ def build_exact_docx_report():
     p_f47.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_f47.paragraph_format.space_before = Pt(2)
     p_f47.paragraph_format.space_after = Pt(2)
-    p_f47.add_run().add_picture(str(ASSETS_DIR / "fig_4_7_chart_capacity.png"), width=Inches(5.4))
+    p_f47.add_run().add_picture(str(ASSETS_DIR / "fig_4_7_chart_capacity.png"), width=Inches(4.6))
     add_caption_h(doc, "Fig 4.7: Event registrations against capacity quota")
 
     add_body_p(doc,
@@ -1087,7 +1086,7 @@ def build_exact_docx_report():
     p_f48.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_f48.paragraph_format.space_before = Pt(2)
     p_f48.paragraph_format.space_after = Pt(2)
-    p_f48.add_run().add_picture(str(ASSETS_DIR / "fig_4_8_chart_dept.png"), width=Inches(5.4))
+    p_f48.add_run().add_picture(str(ASSETS_DIR / "fig_4_8_chart_dept.png"), width=Inches(4.6))
     add_caption_h(doc, "Fig 4.8: Confirmed registrations by department, November 2026")
 
     add_body_p(doc,
@@ -1097,7 +1096,7 @@ def build_exact_docx_report():
     p_f49.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_f49.paragraph_format.space_before = Pt(2)
     p_f49.paragraph_format.space_after = Pt(2)
-    p_f49.add_run().add_picture(str(ASSETS_DIR / "fig_4_9_chart_timeline.png"), width=Inches(5.4))
+    p_f49.add_run().add_picture(str(ASSETS_DIR / "fig_4_9_chart_timeline.png"), width=Inches(4.6))
     add_caption_h(doc, "Fig 4.9: Running total registrations through November 2026")
 
     add_body_p(doc,
@@ -1173,16 +1172,14 @@ def build_exact_docx_report():
             set_cell_border(c, top=dict(sz=2, color="BCCCDC"), bottom=dict(sz=2, color="BCCCDC"))
             p = c.paragraphs[0]
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER if idx in (0, 4) else WD_ALIGN_PARAGRAPH.LEFT
-            p.paragraph_format.line_spacing = 1.15
+            p.paragraph_format.line_spacing = 1.0
+            p.paragraph_format.space_before = Pt(0)
+            p.paragraph_format.space_after = Pt(0)
             for r in p.runs:
                 r.font.name = 'Times New Roman'
-                r.font.size = Pt(8.5)
+                r.font.size = Pt(7.5)
                 if idx in (0, 4):
                     r.font.bold = True
-
-    p_sp3 = doc.add_paragraph()
-    p_sp3.paragraph_format.space_before = Pt(4)
-    p_sp3.paragraph_format.space_after = Pt(4)
 
     add_side_h(doc, "4.3 Conclusion")
     add_body_p(doc,
