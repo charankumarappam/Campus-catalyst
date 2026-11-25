@@ -6,22 +6,38 @@
 ---
 
 ### Submitted by:
-1. **A. CHARAN KUMAR** — `26MVCSMR0186`
-2. **A. BALAJI** — `26MVCSMR0187`
-3. **B. SANJUTH REDDY** — `26MVCSMR0188`
+| Student Name | Hall Ticket / Roll Number |
+| :--- | :--- |
+| **A. CHARAN KUMAR** | `26MVCSMR0186` |
+| **A. BALAJI** | `26MVCSMR0187` |
+| **B. SANJUTH REDDY** | `26MVCSMR0188` |
 
-### Institution:
-**MALLA REDDY TECHNICAL CAMPUS**  
+<br>
+
+<div align="center">
+
+### MALLA REDDY TECHNICAL CAMPUS
 *A Constituent Unit of*  
-**MALLA REDDY VISHWAVIDYAPEETH**  
+### MALLA REDDY VISHWAVIDYAPEETH
 *(Deemed to be University)*  
 Approved by UGC & AICTE - New Delhi  
-Maisammaguda, Medchal (Dist), Hyderabad - 500100, Telangana  
-**NOVEMBER-2026**
+*Maisammaguda, Medchal (Dist), Hyderabad - 500100, Telangana*  
+
+### NOVEMBER-2026
+
+---
+**Page i**
+</div>
+
+<div style="page-break-after: always;"></div>
 
 ---
 
+<div align="center">
+
 ## ABSTRACT
+
+</div>
 
 Managing collegiate event registrations across multi-department academic institutions remains an operational bottleneck when handled through traditional paper logs or disconnected spreadsheets. Common issues include catastrophic overbooking, duplicate participant enrolments, lack of real-time seat availability visibility, and data fragmentation. Campus Catalyst: College Event Registration Manager is an enterprise-grade academic software solution architected in Python to automate and centralize collegiate event lifecycle management.
 
@@ -32,259 +48,493 @@ The user interface ecosystem provides an interactive Streamlit Web Portal (featu
 **Keywords:** Python, College Event Management, Seat Quota Enforcement, Duplicate Prevention, SQLite WAL Mode, Streamlit, Plotly, Academic Software.
 
 ---
+<div align="center"><b>Page ii</b></div>
+
+<div style="page-break-after: always;"></div>
+
+---
+
+<div align="center">
 
 ## TABLE OF CONTENTS
 
-- **CHAPTER 1: SOFTWARE REQUIREMENTS** ..................................................... Page 1
-  - 1.1 Operating System ..................................................................................... Page 1
-  - 1.2 Programming Language ............................................................................... Page 1
-  - 1.3 Tools / IDE Used .................................................................................... Page 1
-  - 1.4 Libraries and Packages (Table 1.1) .................................................................. Page 2
-  - 1.5 Hardware Requirements (Table 1.2) ................................................................. Page 3
-- **CHAPTER 2: SYSTEM DESIGN** ................................................................. Page 4
-  - 2.1 Overview of the System ............................................................................. Page 4
-  - 2.2 Block Diagram (Figure 2.1) ......................................................................... Page 5
-  - 2.3 Algorithm (Steps 1 to 16) .......................................................................... Page 6
-  - 2.4 Flowchart (Figure 2.2) ............................................................................. Page 7
-  - 2.5 Description of Modules (Table 2.1) ................................................................. Page 8
-- **CHAPTER 3: IMPLEMENTATION** ............................................................... Page 9
-  - 3.1 Working of the Project ............................................................................. Page 9
-  - 3.2 Key Code ........................................................................................... Page 10
-  - 3.3 How to Run the Program ............................................................................. Page 12
-- **CHAPTER 4: RESULTS AND CONCLUSION** .................................................... Page 13
-  - 4.1 Results and Visualizations (Figures 4.1 & 4.2) .................................................... Page 13
-  - 4.2 Test Cases (Table 4.1: TC-01 to TC-15) ............................................................ Page 17
-  - 4.3 Conclusion and Future Scope ........................................................................ Page 19
+</div>
+
+- **CHAPTER 1: SOFTWARE REQUIREMENTS** .................................................... 1
+- **CHAPTER 2: SYSTEM DESIGN** ............................................................... 4
+- **CHAPTER 3: IMPLEMENTATION** ............................................................. 9
+- **CHAPTER 4: RESULTS AND CONCLUSION** .......................................... 12
+
+---
+<div align="center"><b>Page iii</b></div>
+
+<div style="page-break-after: always;"></div>
 
 ---
 
-# CHAPTER 1: SOFTWARE REQUIREMENTS
+<div align="center">
 
-This chapter enumerates the foundational software stack, language environment, development tools, and hardware specifications required to deploy, execute, and evaluate the Campus Catalyst: College Event Registration Manager platform. The architecture is engineered using cross-platform standards ensuring seamless execution across diverse computing environments without requiring expensive proprietary licenses.
+## CHAPTER 1: SOFTWARE REQUIREMENTS
+
+</div>
+
+This chapter lists the software and hardware needed to build and run Campus Catalyst: College Event Registration Manager. Anyone who installs the items below can run the project on his or her own computer.
 
 ### 1.1 Operating System
-Campus Catalyst was developed and verified on 64-bit operating systems including Microsoft Windows 11 (64-bit, Version 23H2/24H2) and Ubuntu Linux 22.04/24.04 LTS. The underlying codebase strictly adheres to platform-agnostic Python conventions through standard path abstractions (`pathlib.Path`) and cross-platform operating system calls (`os`, `sys`). For terminal and console interactions, ANSI escape sequence compatibility is maintained on both modern Windows Terminal / PowerShell and POSIX-compliant UNIX shells.
+The project was developed with Python 3.12 and tested on Microsoft Windows 11 and Ubuntu Linux 24.04 (64-bit). The code uses portable standard-library modules (`pathlib`, `os`), so it also runs on Windows 10/11 and macOS. For coloured output on Windows the program switches the console to ANSI mode automatically; on any terminal that cannot show colours (or when the NO_COLOR variable is set) it falls back to plain text.
 
 ### 1.2 Programming Language
-The platform is authored in Python 3.10+ (tested and benchmarked on Python 3.12 and Python 3.14). Python was selected due to its expressive readability, built-in dataclass constructs, rich standard library support for atomic serialization (`json`, `csv`), database engine integrations (`sqlite3`), and an extensive ecosystem of high-performance analytical libraries (`pandas`, `matplotlib`, `plotly`).
+Python 3.12 was used for development; the project needs Python 3.10 or later. Python was chosen because its syntax is simple and readable, it has built-in data types (lists, dictionaries, dataclasses) that suit an event seat tracker, and its standard library already provides SQLite, JSON, CSV, regex and datetime support. The Matplotlib and Plotly libraries add interactive and static charting.
 
 ### 1.3 Tools / IDE Used
-The integrated development environments utilized during the project lifecycle include Visual Studio Code and JetBrains PyCharm. Git distributed version control was utilized for source code tracking and remote synchronization with GitHub. Python's built-in `venv` module provides isolated virtual environment management to avoid package version collisions, while the native `unittest` framework drives automated regression and validation test suites.
+Visual Studio Code (or any code editor / IDE such as PyCharm or IDLE) was used to write and run the code. The program runs in a web browser via Streamlit, in a terminal (Command Prompt, PowerShell or Linux shell), and as a desktop GUI. `pip` installs required libraries and `venv` creates an isolated environment. The unittest framework runs automated tests, and Matplotlib was also used to draw the block diagram and flowchart in this report.
 
 ### 1.4 Libraries and Packages
-The platform adopts a hybrid architecture combining pure standard-library primitives with specialized presentation and visualization modules. Table 1.1 outlines the core libraries, their respective versions, and their operational roles.
+The project imports a few specialized presentation libraries (Streamlit, Plotly, Pandas, Matplotlib) alongside Python's standard library. Table 1.1 lists every library used.
 
-#### Table 1.1: Libraries and Packages Used in Campus Catalyst
-| Library / Module | Version / Origin | Operational Role in Project |
-| :--- | :---: | :--- |
-| `streamlit` | 1.30.0+ | High-performance reactive web application framework powering the administrative and student self-service portal |
-| `plotly` | 5.18.0+ | Interactive graphing library providing dynamic seat utilization gauges and department distribution charts |
-| `pandas` | 2.1.0+ | Data manipulation engine for bulk attendee filtering, search sorting, and tabular aggregations |
-| `matplotlib` | 3.7.0+ | Static publication-quality chart rendering for architectural documentation and offline reports |
-| `sqlite3` | Standard Library | Embedded ACID-compliant transactional relational database operating in Write-Ahead Logging mode |
-| `dataclasses` | Standard Library | Strongly-typed entity models for Events, Attendees, Registrations, and Capacity Records |
-| `re` | Standard Library | Regular expression pattern matching for student roll numbers, email addresses, and phone validation |
-| `csv` / `json` | Standard Library | Dual serialization engines for atomic file backups, transaction mirrors, and roster exports |
-| `unittest` | Standard Library | Automated unit test suite verifying validation logic, capacity bounds, and duplicate rejection |
-| `pathlib` / `os` | Standard Library | Cross-platform directory resolution and atomic filesystem write operations |
+---
+<div align="center"><b>Page 1</b></div>
+
+<div style="page-break-after: always;"></div>
+
+---
+
+#### Table 1.1: Libraries used in the project
+| Library | Version | Purpose |
+| :--- | :--- | :--- |
+| **streamlit** | 1.30.0+ | Interactive reactive web application framework powering the administrative portal and registration desk |
+| **plotly** | 5.18.0+ | Renders live seat capacity gauges and department breakdown charts (`app_streamlit.py`) |
+| **pandas** | 2.1.0+ | Tabular data filtering, search sorting, and registration aggregations |
+| **matplotlib** | 3.7+ (tested 3.11.2) | Draws the architectural block diagram, flowchart, and publication charts |
+| **sqlite3** | Standard library | Embedded relational database running in Write-Ahead Logging (WAL) mode for atomic transactions |
+| **json** | Standard library | Saves and loads events and attendees mirror state (`storage.py`) |
+| **csv** | Standard library | Reads CSV files for bulk attendee import and writes student roster exports |
+| **datetime** | Standard library | Validates event timestamps and generates transaction booking stamps |
+| **re** | Standard library | Regular expressions for roll number, email RFC, and phone sanity checking |
+| **dataclasses** | Standard library | Defines Event, Attendee, and Registration records (`models.py`) |
+| **pathlib, os** | Standard library | Cross-platform file paths and atomic safe saving via temporary replacement |
+| **unittest** | Standard library | Runs the 16 automated tests in `test_suite.py` |
 
 ### 1.5 Hardware Requirements
-Campus Catalyst is engineered with high compute and memory efficiency. The underlying transactional engine operates comfortably on entry-level desktop and laptop machines without specialized hardware accelerators. Table 1.2 delineates the minimum and recommended hardware configurations.
+The application is light-weight: it handles event registrations in an embedded SQLite database and local files, and needs no external cloud network after dependencies are installed. Table 1.2 gives the minimum specification.
 
-#### Table 1.2: Hardware Requirements of the Project
-| Hardware Component | Minimum Specification | Recommended Specification |
-| :--- | :---: | :---: |
-| **Processor (CPU)** | Intel Core i3 / AMD Ryzen 3 (Dual-Core, 2.0 GHz) | Intel Core i5 / AMD Ryzen 5 (Quad-Core, 2.5 GHz+) |
-| **Random Access Memory (RAM)** | 4 GB DDR3/DDR4 | 8 GB DDR4/DDR5 |
-| **Hard Disk Storage** | 500 MB free disk space | 2 GB free SSD storage (for extended SQLite WAL logs) |
-| **Display Resolution** | 1280 x 720 (Standard HD) | 1920 x 1080 (Full HD, 100% scaling) |
-| **Input Peripherals** | Standard QWERTY Keyboard and Mouse | Standard Keyboard and Precision Pointing Device |
-| **Network Connectivity** | Offline capable (Localhost) | LAN / Wi-Fi for multi-client browser access |
+---
+<div align="center"><b>Page 2</b></div>
+
+<div style="page-break-after: always;"></div>
 
 ---
 
-# CHAPTER 2: SYSTEM DESIGN
+#### Table 1.2: Hardware requirements of the project
+| Component | Minimum Requirement |
+| :--- | :--- |
+| **Processor** | Intel Core i3 or equivalent (64-bit) |
+| **RAM** | 4 GB |
+| **Hard disk space** | 500 MB free (Python, Streamlit, Matplotlib and project files) |
+| **Display / Other** | Keyboard, mouse and a monitor with a browser/terminal window; no internet needed after installation |
 
-This chapter presents the comprehensive architectural blueprint, structural block diagram, execution algorithm, lifecycle flowchart, and modular breakdown of Campus Catalyst. The design decouples input validation, business logic, persistence, and presentation to guarantee data integrity, maintainability, and scalability.
+---
+<div align="center"><b>Page 3</b></div>
+
+<div style="page-break-after: always;"></div>
+
+---
+
+<div align="center">
+
+## CHAPTER 2: SYSTEM DESIGN
+
+</div>
+
+This chapter explains the plan of the project before the code: what the system does, its main blocks, the algorithm, the flowchart and the role of each module.
 
 ### 2.1 Overview of the System
-Campus Catalyst is conceptualized as an integrated event operations hub tailored for university colleges. The system coordinates three interdependent operational stages: Event Catalog Administration, Student Registration and Seat Quota Allocation, and Executive Reporting with Attendance Verification.
+Campus Catalyst is an event operations system that helps collegiate administrators coordinate technical symposia, sports tournaments, and workshops without overbooking. The system tracks event seating capacities, displays live availability gauges, prevents duplicate student registrations, and automatically routes overflow applicants into an ordered waitlist.
 
-The input to the system consists of event definitions (event ID, title, date, venue, category, capacity, and registration fee) created by administrative coordinators, alongside attendee registration submissions (student roll number, full name, institutional email, phone number, academic department, and chosen event ID) submitted by students. Incoming data passes through the sanitization pipeline to eliminate duplicate submissions, invalid formats, and malformed inputs. The core engine checks the seating capacity matrix: if confirmed seats remain below the venue capacity, the student receives a Confirmed ticket; if the venue is at maximum capacity, the student is gracefully placed into an ordered Waitlist queue. All transactions are committed atomically to SQLite with Write-Ahead Logging and mirrored to JSON state files.
+The input is student registration details typed by the user (student roll number, full name, institutional email, phone number, department, and target event) or a batch CSV roster. The process is validation of every field, duplicate checking, capacity quota evaluation (confirmed seats vs maximum venue capacity), and atomic persistence to SQLite WAL and JSON mirrors. The output is live capacity gauges on screen, search results, summary reports, and CSV exports.
 
 ### 2.2 Block Diagram
-The multi-tiered architectural block diagram of Campus Catalyst is illustrated in Figure 2.1. The architecture comprises four distinct abstraction layers: Presentation Layer, Validation & Security Layer, Core Business Logic Layer, and Dual Persistence Layer.
+Figure 2.1 shows how data moves through the system. Everything the user or a CSV file supplies passes through the validation block first, so only clean data reaches the Registration Engine. The engine updates the capacity matrix and feeds the Streamlit portal, desktop GUI, reports and charts; the Storage block persists state in SQLite and JSON.
 
-*(Refer to Figure 2.1 in Campus_Catalyst_Mini_Project_Report.docx / assets_report/fig_2_1_block_diagram.png)*
+---
+<div align="center"><b>Page 4</b></div>
 
-### 2.3 Algorithm
-The overarching operational algorithm governing registration, validation, seat quota allocation, and synchronization is formalized in the following sixteen sequential steps:
-
-1. **Step 1: Start.** Initialize system environment, verify directory permissions, and load environment settings.
-2. **Step 2: Database Connection & WAL Initialization.** Connect to SQLite database `campus_catalyst.db`; execute `PRAGMA journal_mode=WAL;` and `PRAGMA synchronous=NORMAL;` to enforce ACID guarantees with high concurrent throughput.
-3. **Step 3: Schema Verification & Migration.** Check for tables `events`, `attendees`, and `registrations`. If absent, execute DDL scripts; if SQLite is uninitialized, recover state from `data/events.json` and `data/attendees.json`.
-4. **Step 4: Load Event Catalog & Capacity Matrix.** Fetch all active college events into memory dataclasses. Compute current confirmed counts, remaining seats, and occupancy percentages.
-5. **Step 5: Present User Interface.** Render navigation views: Executive Dashboard, Events & Seating Matrix, Registration Portal, Verified Attendee Directory, Alerts, Batch Import, and Reports.
-6. **Step 6: Capture Registration Input.** Read student registration form inputs: Student Name, Roll Number, Email Address, Contact Phone, Academic Department, Academic Year, and Target Event ID.
-7. **Step 7: Regex Sanitization & Formatting.** Execute validators: verify roll number alphanumeric structure; validate email pattern with standard RFC-5322 regex; clean and format phone number to 10 digits; verify department against college approved roster.
-8. **Step 8: Check for Duplicate Registration.** Query database: execute `SELECT id FROM registrations WHERE student_roll = ? AND event_id = ?;`. If record found, raise `DuplicateRegistrationError`, reject submission with user-friendly alert, and log warning.
-9. **Step 9: Capacity Evaluation & Slot Reservation.** Query confirmed seat count for the target event. Let $C$ be maximum venue capacity and $N$ be current confirmed bookings.
-10. **Step 10: Conditional Branching on Capacity.** If $N < C$: Allocate confirmed seat (`status = 'Confirmed'`), increment confirmed booking counter, and assign unique Registration Ticket ID. If $N \ge C$: Allocate waitlist position (`status = 'Waitlisted'`), compute queue position $(N - C + 1)$, and notify student.
-11. **Step 11: Transactional Database Commit.** Execute `INSERT INTO registrations` and `INSERT INTO attendees` inside an atomic transaction block (`conn.commit()`).
-12. **Step 12: Dual Mirror Serialization.** Serialize in-memory dataclass state to atomic JSON (`data/events.json` and `data/attendees.json`) using temporary file write and atomic replace (`os.replace`) to prevent file corruption.
-13. **Step 13: Real-Time Gauge & Metric Update.** Recalculate event seating metrics, capacity gauges, ticket collection revenues, and department distribution ratios in the active session.
-14. **Step 14: Automated Alert & Audit Log.** If confirmed bookings reach or exceed 90% of capacity, dispatch high-capacity warning alert to event coordinators. Record transaction in system audit trail.
-15. **Step 15: Bulk CSV Import Processing (Optional).** When a coordinator uploads a student CSV batch, iterate row by row using the validation engine. Insert valid rows, skip duplicate roll numbers, and generate a row-by-row error report for rejected lines.
-16. **Step 16: Stop / Standby.** Persist clean state, flush open database cursors, and wait for subsequent user interaction.
-
-### 2.4 Flowchart
-The comprehensive algorithmic flowchart depicts the decision-making lifecycle from initial student form submission to final transaction commit and ticket allocation.
-
-*(Refer to Figure 2.2 in Campus_Catalyst_Mini_Project_Report.docx / assets_report/fig_2_2_flowchart.png)*
-
-### 2.5 Description of Modules
-Campus Catalyst is structured into specialized, decoupled modules. Each module maintains single-responsibility encapsulation, enabling isolated unit testing and independent functional extension. Table 2.1 details every module within the codebase.
-
-#### Table 2.1: Modular Structure and Functional Responsibilities
-| Module Name | Primary File | Core Functional Responsibility |
-| :--- | :---: | :--- |
-| **Data Models** | `models.py` | Defines dataclass structures: Event, Attendee, Registration, and CapacityMatrix with JSON serialization methods |
-| **Input Validation** | `validators.py` | Regex sanitization for roll numbers, RFC-compliant email validation, 10-digit phone enforcement, and department whitelist checks |
-| **Persistence Engine** | `storage.py` | Manages SQLite 3 with WAL mode, handles automated database schema setup, and maintains atomic JSON/CSV mirrors |
-| **Registration Engine** | `engine.py` | Coordinates atomic seat quota allocation, duplicate checking, waitlist queue escalation, and cancellation re-allocations |
-| **Analytics Routine** | `analytics.py` | Calculates live capacity utilization percentages, department demographic ratios, revenue sums, and alert thresholds |
-| **Streamlit Web Suite** | `app_streamlit.py` | Interactive multi-tab executive web application featuring live capacity gauges, registration dock, and search matrices |
-| **Standalone Dashboard** | `build_dashboard_html.py` | Generates single-file self-contained HTML5/CSS3 executive analytics dashboard with dark theme and responsive layout |
-| **Desktop GUI** | `gui.py` | Lightweight desktop client built with Python Tkinter for offline check-in kiosks and registration desks |
-| **Terminal CLI** | `main.py` & `ui.py` | Interactive command-line interface featuring ANSI color coding, formatted tables, and menu navigation |
-| **Seed Data Generator** | `seed_data.py` | Seeds database with 6 realistic college events and 44 verified attendee registrations for benchmarking |
-| **Automated Test Suite** | `test_suite.py` | Comprehensive test harness containing 16 unit tests verifying validation, capacity bounds, and duplicate rejection |
+<div style="page-break-after: always;"></div>
 
 ---
 
-# CHAPTER 3: IMPLEMENTATION
+<div align="center">
 
-This chapter details the technical implementation of Campus Catalyst, illustrating the end-to-end program execution lifecycle, key algorithmic code listings, and precise operating procedures for local execution.
+![Fig 2.1: Block diagram of Campus Catalyst](assets_report/fig_2_1_block_diagram.png)
+
+**Fig 2.1: Block diagram of Campus Catalyst: College Event Registration Manager**
+
+</div>
+
+### 2.3 Algorithm
+- **Step 1: Start.** Initialize system, set directories, and verify runtime environment.
+- **Step 2: Load data.** Connect to SQLite database `data/campus_catalyst.db` in WAL mode; recover from JSON if uninitialized.
+- **Step 3: Show catalog.** Display active college events with live capacity gauges and confirmed booking metrics.
+- **Step 4: Display menu.** Present navigation options: Dashboard, Events & Matrix, Registration Portal, Directory, Import, Reports.
+- **Step 5 (Add attendee):** Read student name, roll number, email, phone, department, and target event.
+- **Step 6 (Validate):** Sanitize all inputs via regex: verify roll number format, validate email syntax, ensure 10-digit phone, and check department whitelist.
+- **Step 7 (Duplicate check):** Check if roll number is already registered for that event. If duplicate, reject with alert; otherwise proceed.
+
+---
+<div align="center"><b>Page 5</b></div>
+
+<div style="page-break-after: always;"></div>
+
+---
+
+- **Step 8 (Capacity check):** Query confirmed bookings `N` for target event against maximum venue capacity `C`.
+- **Step 9 (Slot allocation):** If `N < C`: Allocate confirmed seat (`status = 'Confirmed'`); increment confirmed count. If `N >= C`: Allocate waitlist position (`status = 'Waitlisted'`).
+- **Step 10 (Transaction commit):** Commit transaction atomically to SQLite database using Write-Ahead Logging.
+- **Step 11 (Mirror sync):** Serialize updated in-memory dataclass state to atomic JSON mirrors (`events.json` and `attendees.json`).
+- **Step 12 (View / Search):** Filter attendees by roll number, name, department, and status; display results in paginated master directory.
+- **Step 13 (Summary & Charts):** Compute department participation ratios, venue saturation percentages, and ticket revenues; render charts.
+- **Step 14 (Batch CSV Import):** Read external CSV row by row, validate each row, skip duplicates, add valid attendees, and log rejected rows.
+- **Step 15 (Exit):** Close open database connections, persist clean state, and exit gracefully.
+- **Step 16: Stop.** Halt system execution.
+
+### 2.4 Flowchart
+The flowchart in Figure 2.2 shows the main execution loop of the program. Every registration action validates input, checks duplicates, branches on capacity quota, commits to SQLite, and updates the live matrix.
+
+---
+<div align="center"><b>Page 6</b></div>
+
+<div style="page-break-after: always;"></div>
+
+---
+
+<div align="center">
+
+![Fig 2.2: Flowchart of Campus Catalyst](assets_report/fig_2_2_flowchart.png)
+
+**Fig 2.2: Flowchart of Campus Catalyst Registration and Seat Allocation Lifecycle**
+
+</div>
+
+### 2.5 Description of Modules
+The project is split into small modules so that every rule lives in one place and can be tested on its own. Table 2.1 gives the job of each file.
+
+---
+<div align="center"><b>Page 7</b></div>
+
+<div style="page-break-after: always;"></div>
+
+---
+
+#### Table 2.1: Modules of the Project
+| Module | Responsibility |
+| :--- | :--- |
+| **main.py** | Entry point for terminal CLI; starts the interactive menu loop |
+| **app_streamlit.py** | Interactive multi-tab executive web application featuring live capacity gauges, registration dock, and search matrices |
+| **models.py** | Defines Event, Attendee, Registration, and CapacityMatrix dataclasses with JSON serialization methods |
+| **validators.py** | Every input rule in one place: roll number, name, email, phone, and department whitelist checks |
+| **storage.py** | Saves and loads SQLite 3 in WAL mode; maintains atomic JSON and CSV mirrors with safe temporary replacement |
+| **engine.py** | Core registration logic: duplicate detection, atomic seat quota allocation, waitlist queuing, and cancellation promotions |
+| **analytics.py** | Calculates live capacity utilization percentages, department demographic ratios, revenue sums, and alert thresholds |
+| **build_dashboard_html.py** | Generates single-file self-contained HTML5/CSS3 executive analytics dashboard with dark theme |
+| **gui.py** | Lightweight desktop client built with Python Tkinter for offline check-in kiosks |
+| **ui.py** | Menu, prompts, ANSI colours, formatted tables, and terminal actions |
+| **seed_data.py** | Loads 6 realistic college events and 44 verified attendee registrations for benchmarking |
+| **test_suite.py** | Comprehensive test harness containing 16 automated unit tests |
+
+---
+<div align="center"><b>Page 8</b></div>
+
+<div style="page-break-after: always;"></div>
+
+---
+
+<div align="center">
+
+## CHAPTER 3: IMPLEMENTATION
+
+</div>
+
+This chapter explains how the design was turned into a working program: what happens when the program runs, the most important code, and the steps to run it.
 
 ### 3.1 Working of the Project
-The functional workflow of Campus Catalyst spans six primary operational phases:
-1. **Initialization and Catalog Synchronization:** Upon invocation, the application establishes a connection to the SQLite database `data/campus_catalyst.db`. It sets Write-Ahead Logging (`PRAGMA journal_mode=WAL`) to allow concurrent read operations without locking. The seed data loader ensures the 6 baseline campus events are loaded with their configured venue quotas.
-2. **Event Catalog and Seating Matrix:** Event coordinators view all collegiate events along with live seating capacity gauges. Each event displays maximum seats, confirmed bookings, remaining capacity, registration fee, and real-time status badges (Available, Nearing Full, or Housefull). For example, EVT-101 (HackCampus 2026) accurately reflects 14 confirmed seats out of 15 available, leaving exactly 1 seat remaining.
-3. **Student Registration and Validation:** Students or administrators register participants through the Streamlit web interface or desktop GUI. Every field is processed through `validators.py`: student names are checked for minimum length, roll numbers are sanitized against alphanumeric college patterns, and emails are verified against institutional formats. Malformed inputs immediately produce clear error messages.
-4. **Quota Enforcement and Waitlisting:** When a registration passes validation, `engine.py` queries current bookings for the selected event. If confirmed seats are below capacity, the student is marked as 'Confirmed'. Once venue capacity is exhausted (100% capacity), the engine automatically assigns the applicant an ordered 'Waitlisted' position without rejecting their application, preventing chaotic walk-in overbooking.
-5. **Multi-Criteria Attendee Directory:** The Attendee Directory module allows event coordinators to filter and search through verified attendees by student roll number, partial name, academic department, and enrollment status. Coordinators can toggle attendee status (Confirmed, Attended, Cancelled) in real time.
-6. **Batch CSV Import and Export Pipeline:** Coordinators can import large batches of student registrations via CSV. The importer validates each row individually, skips existing duplicate roll numbers, and produces a row-by-row error log. Registrations can also be exported to clean CSV and formatted Markdown summaries for faculty reporting.
+**Start-up.** `main.py` or `app_streamlit.py` initializes the system. The program loads `data/campus_catalyst.db` through `storage.py`, initializes Write-Ahead Logging, prints the banner, and displays the 6 active college events with current seating counts.
+
+**Adding a registration (option 1).** The user enters student name, roll number, email, phone, department, and target event. Each answer is verified by `validators.py`; an invalid value shows an error message and asks again. `engine.py` verifies duplicate absence, checks if confirmed seats are under venue capacity, assigns Confirmed or Waitlisted status, and saves to SQLite and JSON.
+
+**Viewing events and attendee directory (options 2 and 3).** Events are displayed with capacity meters. EVT-101 (HackCampus 2026) displays 14 confirmed seats out of 15 available with 1 seat remaining. The attendee directory allows filtering by department and keyword with instant table rendering.
+
+**Capacity check and quota alerts (options 4 and 5).** Live calculations flag events reaching 90% capacity as WARNING and 100% capacity as HOUSEFULL. When a confirmed booking is cancelled, the first waitlisted applicant is automatically promoted.
+
+**Summary and exports (options 6 to 8).** The summary shows total registrations (44 attendees), capacity utilization (37.9%), revenue collected (Rs 8,500), and department distributions. Markdown and CSV reports are exported into the `exports` folder.
+
+**Importing (options 9 and 10).** A CSV file is read row by row with the same validation rules. Good rows are added, duplicates are skipped, and bad rows are logged. Option 10 loads the 44 verified sample attendees.
+
+---
+<div align="center"><b>Page 9</b></div>
+
+<div style="page-break-after: always;"></div>
+
+---
+
+**Exit.** Option 0 flushes the database and ends the program safely. If an unexpected error occurs during an action, a message is shown and the session continues, so no data is lost.
 
 ### 3.2 Key Code
+Only the two most important parts are shown. The first is input validation of roll numbers and emails in `validators.py`. It strips whitespace, checks formats with regular expressions, and rejects blank or malformed values.
 
-#### 3.2.1 Input Validation and Sanitization (`validators.py`)
 ```python
 def clean_roll_number(raw: str) -> str:
-    """Validates and cleans college student roll number."""
     text = str(raw or '').strip().upper()
     if not text:
         raise ValueError("Student Roll Number cannot be blank.")
     if not re.match(r'^[0-9]{2}[A-Z]{4,6}[0-9]{4}$', text):
         if len(text) < 6 or len(text) > 16:
-            raise ValueError(f"Invalid roll number '{raw}': Must be 6-16 alphanumeric chars.")
+            raise ValueError(f"Invalid roll number '{raw}': Must be 6-16 chars.")
     return text
 
 def clean_email(raw: str) -> str:
-    """Validates RFC-compliant email address."""
     text = str(raw or '').strip().lower()
-    if not text:
-        raise ValueError("Email address cannot be blank.")
-    pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
-    if not re.match(pattern, text):
+    if not text or not re.match(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$', text):
         raise ValueError(f"Invalid email format: '{raw}'. Expected name@college.edu")
     return text
 ```
 
-#### 3.2.2 Atomic Capacity Quota and Waitlist Allocation (`engine.py`)
+The second is the atomic capacity check in `engine.py`. Status is CONFIRMED if bookings are below venue capacity, and WAITLISTED when maximum seats are reached.
+
 ```python
-def register_student(self, attendee: Attendee, event_id: str) -> Tuple[Registration, bool]:
-    """Atomically registers an attendee, checking duplicates and event capacity."""
-    event = self.storage.get_event_by_id(event_id)
-    if not event:
-        raise ValueError(f"Event with ID '{event_id}' does not exist.")
-
-    # 1. Duplicate Registration Guard
+def register_student(self, attendee: Attendee, event_id: str):
     if self.storage.is_already_registered(attendee.roll_number, event_id):
-        raise DuplicateRegistrationError(
-            f"Student {attendee.roll_number} is already registered for event {event_id}."
-        )
-
-    # 2. Capacity Quota Evaluation
+        raise DuplicateRegistrationError(f"Student {attendee.roll_number} already registered.")
     confirmed_count = self.storage.get_confirmed_count(event_id)
-    if confirmed_count < event.capacity:
-        status = RegistrationStatus.CONFIRMED
-        is_waitlisted = False
-    else:
-        status = RegistrationStatus.WAITLISTED
-        is_waitlisted = True
-
-    # 3. Create and Persist Registration Record
-    registration = Registration(
-        reg_id=f"REG-{uuid.uuid4().hex[:8].upper()}",
-        event_id=event_id,
-        student_roll=attendee.roll_number,
-        registered_at=datetime.now().isoformat(),
-        status=status
-    )
-    self.storage.save_registration(registration, attendee)
-    return registration, is_waitlisted
+    event = self.storage.get_event_by_id(event_id)
+    status = RegistrationStatus.CONFIRMED if confirmed_count < event.capacity else RegistrationStatus.WAITLISTED
+    reg = Registration(reg_id=f"REG-{uuid.uuid4().hex[:8].upper()}", event_id=event_id,
+                       student_roll=attendee.roll_number, registered_at=datetime.now().isoformat(), status=status)
+    self.storage.save_registration(reg, attendee)
+    return reg, (status == RegistrationStatus.WAITLISTED)
 ```
 
 ### 3.3 How to Run the Program
-1. **Step 1: Environment Setup.** Ensure Python 3.10+ is installed on the system. Unpack the project folder `python project` and launch a terminal window (PowerShell or Bash).
-2. **Step 2: Virtual Environment Creation.** Create and activate an isolated virtual environment: `python -m venv .venv`; then on Windows execute `.\.venv\Scripts\Activate.ps1`, or on Linux execute `source .venv/bin/activate`.
-3. **Step 3: Dependency Installation.** Install required runtime packages using pip: `pip install -r requirements.txt` (installs streamlit, plotly, pandas, matplotlib).
-4. **Step 4: Launching Streamlit Web Portal.** Start the primary interactive web portal by executing: `streamlit run app_streamlit.py`. The browser automatically opens at `http://localhost:8501`.
-5. **Step 5: Launching Standalone HTML5 Dashboard.** Generate and launch the zero-dependency interactive dashboard: run `python build_dashboard_html.py`, then double-click `dashboard_pro.html` to open in Chrome or Edge.
-6. **Step 6: Executing Desktop GUI or CLI.** For offline desk registration kiosks, launch the desktop interface with `python gui.py`, or launch the terminal interface with `python main.py`.
-7. **Step 7: Running Automated Unit Tests.** Execute the full automated verification test suite by typing: `python -m unittest test_suite.py -v`. Confirm all 16 test cases report PASS.
+**Step 1:** Install Python 3.10 or later from `www.python.org` and unzip the project folder `python project`.
+
+---
+<div align="center"><b>Page 10</b></div>
+
+<div style="page-break-after: always;"></div>
 
 ---
 
-# CHAPTER 4: RESULTS AND CONCLUSION
+**Step 2:** Open a terminal in the project folder. Optionally create a virtual environment: `python -m venv .venv`, then activate it (Windows: `.venv\Scripts\activate`; Linux/macOS: `source .venv/bin/activate`).
 
-This chapter presents the empirical outcomes of deploying Campus Catalyst on benchmark institutional data (6 academic events across engineering disciplines and 44 verified attendee registrations). The chapter details visual outputs, exhaustive test cases, and concluding observations.
+**Step 3:** Install the required libraries using the command: `pip install -r requirements.txt` (this installs `streamlit`, `plotly`, `pandas`, `matplotlib`).
 
-### 4.1 Results and Visualizations
-The platform was verified through intensive operational workflows covering event publishing, single and batch student registration, capacity boundary saturation, and dynamic analytics rendering.
+**Step 4:** Start the primary interactive web portal with: `streamlit run app_streamlit.py`. The browser opens automatically at `http://localhost:8501`.
 
-*(Figure 4.1: Verified Student Registrations by Academic Department)*  
-*(Figure 4.2: Event Capacity vs Confirmed Bookings Seating Matrix)*
+**Step 5:** To launch the standalone executive HTML5 dashboard, run `python build_dashboard_html.py` and open `dashboard_pro.html` in any modern browser. For desktop GUI, run `python gui.py`; for terminal CLI, run `python main.py`.
+
+**Step 6:** To run the automated verification test suite, type: `python -m unittest test_suite.py -v`. Confirm all 16 tests pass.
+
+---
+<div align="center"><b>Page 11</b></div>
+
+<div style="page-break-after: always;"></div>
+
+---
+
+<div align="center">
+
+## CHAPTER 4: RESULTS AND CONCLUSION
+
+</div>
+
+This chapter shows the output of the project. All screens were produced by running the program on the sample data supplied with it (6 college events and 44 verified attendees across departments). The chapter ends with the test cases and the conclusion.
+
+### 4.1 Results (Code and Output Screenshots)
+
+<div align="center">
+
+![Fig 4.1: Start-up screen](assets_report/fig_4_1_startup.png)
+
+**Fig 4.1: Start-up screen, main menu and loading of the sample data**
+
+</div>
+
+The program prints the banner and the 10-option menu. Option 10 loaded all 44 verified sample registrations across 6 campus events with no duplicates and no rejected rows.
+
+---
+<div align="center"><b>Page 12</b></div>
+
+<div style="page-break-after: always;"></div>
+
+---
+
+<div align="center">
+
+![Fig 4.2: Seating capacity check](assets_report/fig_4_2_capacity.png)
+
+**Fig 4.2: Seating capacity check for EVT-101 (HackCampus 2026)**
+
+</div>
+
+Bookings stand at 14 of the 15 available seats (93.3%), so the status is NEARING CAPACITY (WARNING) with exactly 1 seat remaining. Total collected revenue is Rs 3,500.00, and a high-demand alert is dispatched before the waitlist queue activates.
+
+---
+<div align="center"><b>Page 13</b></div>
+
+<div style="page-break-after: always;"></div>
+
+---
+
+<div align="center">
+
+![Fig 4.3: Input validation](assets_report/fig_4_3_validation.png)
+
+**Fig 4.3: Input validation while registering a student**
+
+</div>
+
+Wrong inputs are rejected with a reason and the question is repeated: blank name, malformed roll number, non-RFC email, and short phone number. The final valid entry is saved as Seat #15, and the event reaches 100% capacity.
+
+<div align="center">
+
+![Fig 4.4: Bulk CSV import](assets_report/fig_4_4_csv_import.png)
+
+**Fig 4.4: Bulk CSV import with rejected rows**
+
+</div>
+
+---
+<div align="center"><b>Page 14</b></div>
+
+<div style="page-break-after: always;"></div>
+
+---
+
+The test batch file has ten student rows. Seven are valid and are added; one duplicate roll number is skipped, and two malformed rows are rejected with line numbers and written to `data/import_audit.log`.
+
+<div align="center">
+
+![Fig 4.5: Executive summary report](assets_report/fig_4_5_summary.png)
+
+**Fig 4.5: Executive summary report for November 2026**
+
+</div>
+
+The report lists the overall registration count (44 attendees), total campus capacity (116 seats), revenue collected (Rs 8,500), capacity breakdown by event (EVT-102 is 100% full), and department participation percentages.
+
+---
+<div align="center"><b>Page 15</b></div>
+
+<div style="page-break-after: always;"></div>
+
+---
+
+<div align="center">
+
+![Fig 4.6: Search by keyword](assets_report/fig_4_6_search.png)
+
+**Fig 4.6: Search by keyword and department**
+
+</div>
+
+Searching for '26MVCSMR' in department 'CSE' returns the 3 matching student registrations (A. Charan Kumar, A. Balaji, and B. Sanjuth Reddy) and their confirmed booking statuses.
+
+<div align="center">
+
+![Fig 4.7: Event registrations against capacity quota](assets_report/fig_4_7_chart_capacity.png)
+
+**Fig 4.7: Event registrations against capacity quota**
+
+</div>
+
+EVT-102 (10/10) is highlighted in red because it has reached 100% full capacity; EVT-101 (14/15) is drawn in orange; and other events remain below the capacity threshold.
+
+---
+<div align="center"><b>Page 16</b></div>
+
+<div style="page-break-after: always;"></div>
+
+---
+
+<div align="center">
+
+![Fig 4.8: Confirmed registrations by department](assets_report/fig_4_8_chart_dept.png)
+
+**Fig 4.8: Confirmed registrations by department, November 2026**
+
+</div>
+
+Computer Science and Engineering (18 registrations) and AIML (12 registrations) represent the largest student participation share; Civil and Mechanical represent the smallest.
+
+<div align="center">
+
+![Fig 4.9: Running total registrations](assets_report/fig_4_9_chart_timeline.png)
+
+**Fig 4.9: Running total registrations through November 2026**
+
+</div>
+
+The step line shows how cumulative registrations grow over the course of the month, reaching 44 confirmed participants while tracking toward the campus goal.
+
+---
+<div align="center"><b>Page 17</b></div>
+
+<div style="page-break-after: always;"></div>
+
+---
+
+<div align="center">
+
+![Fig 4.10: Automated unit tests](assets_report/fig_4_10_tests.png)
+
+**Fig 4.10: Automated unit tests**
+
+</div>
+
+All 16 unit tests for validation, duplicate checks, capacity engine, waitlist queuing, and SQLite storage pass in 0.142 seconds.
 
 ### 4.2 Test Cases
-Exhaustive test cases were executed against Campus Catalyst to validate input sanitization, duplicate prevention, capacity boundary enforcement, persistence durability, and CSV batch handling. Table 4.1 presents the test case specifications and empirical results.
+Each test below was run on the program. Rows 1 to 10 are input checks that can be repeated by typing the input in the menu; rows 11 to 14 test complete system features. The wrong-input cases were all rejected as expected.
 
-#### Table 4.1: Comprehensive Test Cases of the Project
-| Test ID | Input / Action Under Test | Expected Output | Actual Output | Result |
+---
+<div align="center"><b>Page 18</b></div>
+
+<div style="page-break-after: always;"></div>
+
+---
+
+#### Table 4.1: Test cases of the project
+| No. | Input | Expected Output | Actual Output | Result |
 | :---: | :--- | :--- | :--- | :---: |
-| **TC-01** | Register student with valid details: A. Charan Kumar, 26MVCSMR0186, charan@college.edu, EVT-101 | Registration accepted; Confirmed ticket issued; SQLite row committed | Registration accepted; Status: Confirmed; REG ID generated | **Pass** |
-| **TC-02** | Student Name submitted as empty string / whitespace | Rejected with validation error: 'Name cannot be blank' | Rejected: 'Student full name cannot be blank' | **Pass** |
-| **TC-03** | Roll Number submitted with invalid characters: '##123--' | Rejected with validation error: Invalid roll number structure | Rejected: 'Invalid roll number: Must be 6-16 alphanumeric chars' | **Pass** |
-| **TC-04** | Institutional Email missing '@' or domain: 'charankumar' | Rejected with email syntax error | Rejected: 'Invalid email format: Expected name@college.edu' | **Pass** |
-| **TC-05** | Phone Number entered with 8 digits: '98765432' | Rejected: Phone must contain 10 valid digits | Rejected: 'Phone number must contain exactly 10 digits' | **Pass** |
-| **TC-06** | Valid Phone entered with country code: '+91-9876543210' | Sanitized to clean 10-digit format: '9876543210' and accepted | Cleaned and saved as '9876543210' | **Pass** |
-| **TC-07** | Duplicate submission: Student 26MVCSMR0186 registers again for EVT-101 | Rejected with DuplicateRegistrationError; no duplicate row created | Rejected: 'Student 26MVCSMR0186 already registered for EVT-101' | **Pass** |
-| **TC-08** | Same student registers for different event: 26MVCSMR0186 registers for EVT-103 | Accepted; multi-event enrollment for distinct events permitted | Accepted; Confirmed ticket generated for EVT-103 | **Pass** |
-| **TC-09** | Registration for EVT-101 at 14/15 seats (1 seat remaining) | Accepted as Confirmed; event capacity reaches 15/15 (100% full) | Accepted; Status: Confirmed; remaining seats drops to 0 | **Pass** |
-| **TC-10** | Subsequent registration for EVT-101 when at 15/15 full capacity | Auto-routed to Waitlist; Status = Waitlisted; Queue position #1 | Enqueued to Waitlist; Status: Waitlisted; Queue #1 assigned | **Pass** |
-| **TC-11** | Cancellation of confirmed booking for EVT-101 | Booking marked Cancelled; first waitlisted student promoted to Confirmed | Booking cancelled; Waitlist position #1 promoted to Confirmed | **Pass** |
-| **TC-12** | Batch CSV upload with 10 rows (7 valid, 2 invalid emails, 1 duplicate roll) | 7 rows inserted; 3 rejected rows logged with line numbers and reasons | 7 rows added; 3 rows logged with specific failure reasons | **Pass** |
-| **TC-13** | Multi-criteria search: Filter attendees by Department = 'CSE' and Status = 'Confirmed' | Returns exact matching subset of CSE confirmed attendees | Returned 18 verified CSE confirmed attendee records | **Pass** |
-| **TC-14** | Simulated power-cut / process crash during database write | SQLite WAL rollback guarantees database uncorrupted; JSON mirror intact | Database integrity verified with PRAGMA integrity_check; zero corruption | **Pass** |
-| **TC-15** | Execution of automated test suite (`python -m unittest test_suite.py`) | All 16 unit tests complete with OK status | Ran 16 tests in 0.142s - OK (100% pass coverage) | **Pass** |
+| **1** | Add A. Charan Kumar, 26MVCSMR0186, charan@college.edu, EVT-101 | Registration accepted; Seat allocated | Accepted; Status: Confirmed | **Pass** |
+| **2** | Student name left blank | Rejected with a reason | name can't be blank | **Pass** |
+| **3** | Roll number: ##123 | Rejected: not alphanumeric | '##123' is not valid | **Pass** |
+| **4** | Roll number: 26MVCSMR0186 (already registered for EVT-101) | Rejected: duplicate registration | Student already registered for EVT-101 | **Pass** |
+| **5** | Same student registers for EVT-103 | Accepted for different event | Accepted as Confirmed | **Pass** |
+| **6** | Email: charan_email (no @) | Rejected: invalid format | invalid email format | **Pass** |
+| **7** | Phone: 98765 (less than 10 digits) | Rejected: not 10 digits | phone must be 10 digits | **Pass** |
+| **8** | Phone: +91-9876543210 | Cleaned to 9876543210 and accepted | Accepted as 9876543210 | **Pass** |
+| **9** | Department: UnknownDept | Rejected: unknown department | unknown department | **Pass** |
+| **10** | Book seat for EVT-101 when at 14/15 seats | Accepted as Confirmed; event now 15/15 | Accepted; 0 remaining | **Pass** |
+| **11** | Book seat for EVT-101 when full (15/15) | Routed to Waitlist; Status = Waitlisted | Waitlisted; Queue #1 | **Pass** |
+| **12** | Cancel confirmed booking for EVT-101 | Cancelled; first waitlist promoted | Cancelled; Waitlist promoted | **Pass** |
+| **13** | Import sample_batch.csv (10 rows) | Valid rows added, bad logged | 7 added, 1 duplicate, 2 rejected | **Pass** |
+| **14** | Simulate crash during write | Database uncorrupted; WAL intact | Integrity verified (unit test) | **Pass** |
 
-### 4.3 Conclusion and Future Scope
-Campus Catalyst: College Event Registration Manager successfully achieves all targeted architectural and operational objectives. The system provides a unified, reliable, and user-friendly platform for managing institutional events, automating student registrations, and maintaining flawless seat capacity quotas.
+### 4.3 Conclusion
+Campus Catalyst: College Event Registration Manager was built as planned. It lets event coordinators publish campus events, enforces venue seating capacity quotas, and prevents overbooking. The system clearly displays capacity statuses: AVAILABLE, NEARING CAPACITY (WARNING) at 90%, and HOUSEFULL at 100%. Strict validation keeps bad data out, whether typed in or imported from CSV, and a damaged file never crashes the program.
 
-Through the combination of strict input validation, zero duplicate registration enforcement, and atomic capacity checking, the platform prevents overbooking and eliminates record corruption. The integration of SQLite in Write-Ahead Logging mode guarantees transactional durability, while real-time analytical dashboards empower university administrators with instantaneous insight into student engagement and ticket collections. All sixteen automated unit tests pass with zero regressions.
+---
+<div align="center"><b>Page 19</b></div>
 
-**Future Scope:**
-- **Automated QR Code Ticketing:** Generating cryptographically signed QR code digital admission passes embedded into confirmation emails for rapid check-in at venue entrance gates.
-- **Payment Gateway Integration:** Integrating automated payment gateways (e.g., Razorpay, UPI) to seamlessly collect and reconcile registration fees for paid technical workshops.
-- **SMS & WhatsApp Gateway Integration:** Dispatching instant SMS and WhatsApp confirmation alerts and waitlist promotion updates directly to participants' mobile devices.
-- **Role-Based Access Control (RBAC):** Implementing tiered administrative authentication separating student representatives, department coordinators, and central university deans.
+<div style="page-break-after: always;"></div>
+
+---
+
+Multi-criteria attendee search, summary analytics, charts and exports complete the tool, and the 16 unit tests and sample runs in this chapter show that it works as intended.
+
+While making the project we learned to split a program into modules with one job each, to use dataclasses and standard libraries (`sqlite3`, `json`, `csv`, `re`, `datetime`), to validate input instead of trusting it, to manage transactional database operations safely in WAL mode, to draw charts with Matplotlib and Plotly, to build interactive Streamlit web applications, and to write automated unit tests.
+
+Possible future work includes automated QR code admission ticketing for rapid gate check-in, online payment gateway integration for paid technical workshops, SMS/WhatsApp notifications for instant confirmation and waitlist alerts, and multi-tier role-based authentication.
+
+---
+<div align="center"><b>Page 20</b></div>
