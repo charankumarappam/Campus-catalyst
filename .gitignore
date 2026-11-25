@@ -15,3 +15,5 @@ __pycache__/
 # Archives
 *.zip
 *.tar.gz
+*.tar.xz
+*.tar
